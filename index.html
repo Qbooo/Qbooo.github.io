@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>심규보 - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -18,6 +20,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -27,12 +30,16 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">안녕하세요,<br><span class="highlight">심규보</span>입니다</h1>
-            <p class="hero-subtitle">Backend Developer | Cloud Engineer</p>
+            <p class="hero-subtitle">Backend & Cloud Engineer</p>
             <p class="hero-description">
-                유기적인 흐름을 설계하고, 전체적인 시스템의 안정성을 고민하는 아키텍처 지향 개발자입니다.<br>
+                실 서비스를 직접 설계하고 배포하며,<br>
+                안정적인 인프라 운영에 관심이 많은 엔지니어입니다.
             </p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+                <a href="https://github.com/Qbooo" class="btn btn-github-hero" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
                 <a href="#contact" class="btn btn-secondary">연락하기</a>
             </div>
         </div>
@@ -45,30 +52,31 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        "저는 안정적이고 확장 가능한 백엔드 시스템을 구축하는 데 열정을 가진 개발자입니다. 
-                        특히 클라우드 인프라 구축과 보안에 관심이 많으며, 
-                        실제 프로덕션 환경에서 사용할 수 있는 서비스를 만드는 것을 목표로 합니다."
+                        Java/Spring Boot 백엔드 개발 경험을 베이스로, AWS·Docker·CI/CD 등
+                        인프라 영역으로 성장하고 있습니다.
+                        실 서비스(ValanSe)를 직접 설계·배포·운영하며 얻은 경험을 바탕으로,
+                        안정적이고 확장 가능한 시스템을 만드는 데 관심이 많습니다.
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
-                            <i class="fas fa-project-diagram"></i>
+                            <i class="fas fa-rocket"></i>
                             <div>
-                                <h3>5+</h3>
-                                <p>프로젝트</p>
+                                <h3>실 서비스 배포</h3>
+                                <p>직접 설계·배포 경험</p>
                             </div>
                         </div>
                         <div class="stat-item">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-server"></i>
                             <div>
-                                <h3>3+</h3>
-                                <p>주요 기술</p>
+                                <h3>가상화 인프라 구축</h3>
+                                <p>VMware vSphere 환경 구성</p>
                             </div>
                         </div>
                         <div class="stat-item">
                             <i class="fas fa-graduation-cap"></i>
                             <div>
                                 <h3>한성대학교</h3>
-                                <p>모바일소프트웨어/웹공학 트랙</p>
+                                <p>모바일SW / 웹공학 트랙</p>
                             </div>
                         </div>
                     </div>
@@ -77,261 +85,283 @@
         </div>
     </section>
 
-    <!-- Skills Section 수정 -->
-<section id="skills" class="skills">
-    <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-            
-            <!-- Backend Languages -->
-            <div class="skill-category">
-                <h3>Backend Languages</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="devicon-python-plain colored"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-java-plain colored"></i>
-                        <span>Java</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Frameworks & Libraries -->
-            <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="devicon-spring-plain colored"></i>
-                        <span>Spring Boot</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-spring-plain colored"></i>
-                        <span>Spring Security</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-django-plain colored"></i>
-                        <span>Django</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-react-original colored"></i>
-                        <span>React</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-nodejs-plain colored"></i>
-                        <span>Node.js</span>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="skills-grid">
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-java-plain colored"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-spring-plain colored"></i>
+                            <span>Spring Boot</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-python-plain colored"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>FastAPI</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Databases -->
-            <div class="skill-category">
-                <h3>Databases</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="devicon-mysql-plain colored"></i>
-                        <span>MySQL</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-postgresql-plain colored"></i>
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-mongodb-plain colored"></i>
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-redis-plain colored"></i>
-                        <span>Redis</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Infra & Deployment -->
-            <div class="skill-category">
-                <h3>Infra & Deployment</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
-                        <span>AWS</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-docker-plain colored"></i>
-                        <span>Docker</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-kubernetes-plain colored"></i>
-                        <span>Kubernetes</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-nginx-original colored"></i>
-                        <span>Nginx</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-github-original"></i>
-                        <span>GitHub Actions</span>
+
+                <div class="skill-category">
+                    <h3>Database</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-mysql-plain colored"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-redis-plain colored"></i>
+                            <span>Redis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                            <span>AWS RDS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-hdd"></i>
+                            <span>AWS S3</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Tools -->
-            <div class="skill-category">
-                <h3>Tools</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="devicon-git-plain colored"></i>
-                        <span>Git</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="devicon-linux-plain"></i>
-                        <span>Linux</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-code"></i>
-                        <span>Postman</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-robot"></i>
-                        <span>N8N</span>
+
+                <div class="skill-category">
+                    <h3>Infra / Cloud</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-docker-plain colored"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-nginx-original colored"></i>
+                            <span>Nginx</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                            <span>AWS EC2</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-desktop"></i>
+                            <span>VMware vSphere</span>
+                        </div>
                     </div>
                 </div>
+
+                <div class="skill-category">
+                    <h3>CI/CD & IaC</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-github-original"></i>
+                            <span>GitHub Actions</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-kubernetes-plain colored"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-git-plain colored"></i>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Monitoring</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Grafana</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Prometheus</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-linux-plain"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>AWS WAF</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
-                
-                <!-- Project 1: SCOPE -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250?text=SCOPE" alt="SCOPE 프로젝트">
-                        <div class="project-overlay">
-                            <span class="project-status">졸업작품</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">SCOPE</h3>
-                        <p class="project-description">
-                            여기에 SCOPE 프로젝트에 대한 간단한 설명을 작성하세요.
-                            주요 기능과 기술 스택을 2-3줄로 요약합니다.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">Docker</span>
-                        </div>
-                        <div class="project-buttons">
-                            <a href="#" class="project-btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-btn btn-demo">
-                                <i class="fas fa-info-circle"></i> About
-                            </a>
-                            <a href="#" class="project-btn btn-play" target="_blank">
-                                <i class="fas fa-play"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project 2: ValanSe -->
+                <!-- Project 1: ValanSe -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250?text=ValanSe" alt="ValanSe 프로젝트">
+                    <div class="project-banner project-banner-img">
+                        <img src="images/valanse.png" alt="ValanSe">
+                        <span class="project-period-badge live-badge">🟢 배포 중</span>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">ValanSe</h3>
+                        <p class="project-subtitle">밸런스게임 투표 플랫폼</p>
                         <p class="project-description">
-                            여기에 ValanSe 프로젝트에 대한 간단한 설명을 작성하세요.
-                            주요 기능과 기술 스택을 2-3줄로 요약합니다.
+                            Spring Boot 3.2.5 + Next.js 기반 밸런스게임 투표 서비스.
+                            prod/dev/local 3개 환경 분리 구성, ALB + WAF 보안 설정, Kakao OAuth2 인증.
+                            EC2 + Nginx 실 배포 중.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Node.js</span>
-                            <span class="tag">React</span>
-                            <span class="tag">MongoDB</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">EC2</span>
+                            <span class="tag">Nginx</span>
+                            <span class="tag">GitHub Actions</span>
                         </div>
                         <div class="project-buttons">
-                            <a href="#" class="project-btn btn-github" target="_blank">
+                            <a href="https://valanse.kr/main" class="project-btn btn-demo" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> 접속하기
+                            </a>
+                            <a href="https://github.com/ValanSee" class="project-btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-btn btn-demo">
-                                <i class="fas fa-info-circle"></i> About
-                            </a>
-                            <a href="#" class="project-btn btn-play" target="_blank">
-                                <i class="fas fa-play"></i> Demo
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3: 동물 일기 -->
+                <!-- Project 2: FWS (AllIsWell) -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250?text=Animal+Diary" alt="동물 일기 프로젝트">
+                    <div class="project-banner project-banner-img">
+                        <img src="images/fws.png" alt="FWS">
+                        <span class="project-period-badge">2026.03</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">동물 일기</h3>
+                        <h3 class="project-title">FWS</h3>
+                        <p class="project-subtitle">VM 온디맨드 프로비저닝 플랫폼</p>
                         <p class="project-description">
-                            여기에 동물 일기 프로젝트에 대한 간단한 설명을 작성하세요.
-                            주요 기능과 기술 스택을 2-3줄로 요약합니다.
+                            VMware vSphere 기반 셀프서비스 VM 프로비저닝 플랫폼.
+                            웹 UI로 VM 생성·삭제를 자동화하고, 실시간 자원 모니터링 대시보드와
+                            Apache Guacamole 웹 터미널을 제공합니다.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
-                            <span class="tag">Django</span>
-                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">VMware</span>
+                            <span class="tag">vSphere</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Guacamole</span>
                         </div>
                         <div class="project-buttons">
-                            <a href="#" class="project-btn btn-github" target="_blank">
+                            <a href="https://github.com/WooriFisa-CE06-AllIsWell" class="project-btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-btn btn-demo">
-                                <i class="fas fa-info-circle"></i> About
-                            </a>
-                            <a href="#" class="project-btn btn-play" target="_blank">
-                                <i class="fas fa-play"></i> Demo
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 4: WAF + 3-Tier -->
+                <!-- Project 3: n8n 스터디 자동화 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250?text=WAF+3-Tier" alt="WAF 3-Tier 프로젝트">
-                        <div class="project-overlay">
-                            <span class="project-status">Infrastructure</span>
-                        </div>
+                    <div class="project-banner project-banner-img">
+                        <img src="images/n8n.png" alt="n8n">
+                        <span class="project-period-badge">2026.01</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">WAF + 3-Tier Architecture</h3>
+                        <h3 class="project-title">n8n 스터디 자동화</h3>
+                        <p class="project-subtitle">알고리즘 스터디 자동화 파이프라인</p>
                         <p class="project-description">
-                            여기에 WAF와 3-Tier 아키텍처 프로젝트에 대한 설명을 작성하세요.
-                            보안과 확장성을 고려한 인프라 구축 경험을 설명합니다.
+                            n8n 워크플로우로 매일 알고리즘 문제를 자동 추천하고,
+                            GitHub 커밋 감지 시 Notion 스터디 플래너를 자동 업데이트하는
+                            이벤트 드리븐 자동화 시스템.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">WAF</span>
-                            <span class="tag">Nginx</span>
+                            <span class="tag">n8n</span>
                             <span class="tag">Docker</span>
+                            <span class="tag">GitHub API</span>
+                            <span class="tag">Notion API</span>
+                            <span class="tag">Slack</span>
                         </div>
                         <div class="project-buttons">
-                            <a href="#" class="project-btn btn-github" target="_blank">
+                            <a href="https://github.com/Fisa-n8n-team/n8n-project" class="project-btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
-                            <a href="#" class="project-btn btn-demo">
-                                <i class="fas fa-info-circle"></i> About
-                            </a>
-                            <a href="#" class="project-btn btn-play" target="_blank">
-                                <i class="fas fa-play"></i> Demo
-                            </a>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot active"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2025.12 — 현재</span>
+                        <h3 class="timeline-title">우리 FIS 아카데미 클라우드 엔지니어링 6기</h3>
+                        <span class="timeline-badge badge-active">진행 중</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2025.09 — 2025.12</span>
+                        <h3 class="timeline-title">OO대학교 SW 아카데미 7기</h3>
+                        <span class="timeline-badge badge-done">수료</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2025.09 — 2025.12</span>
+                        <h3 class="timeline-title">소프트웨어학과 머신러닝 과목 Teaching Assistant</h3>
+                        <span class="timeline-badge badge-done">완료</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2025.03 — 2025.06</span>
+                        <h3 class="timeline-title">소프트웨어학과 데이터 과학 과목 Teaching Assistant</h3>
+                        <span class="timeline-badge badge-done">완료</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2025.03 — 2025.08</span>
+                        <h3 class="timeline-title">대학생 IT 연합 동아리 TAVE — 우수회원상</h3>
+                        <span class="timeline-badge badge-done">완료</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-period">2024.01 — 2024.07</span>
+                        <h3 class="timeline-title">데이터 분석 연합 동아리 활동</h3>
+                        <span class="timeline-badge badge-done">완료</span>
                     </div>
                 </div>
 
@@ -345,25 +375,15 @@
             <h2 class="section-title">Contact</h2>
             <p class="contact-subtitle">프로젝트 협업이나 채용 제안은 언제든 환영합니다!</p>
             <div class="contact-grid">
-                <a href="mailto:your.email@example.com" class="contact-card">
+                <a href="mailto:tla1503@naver.com" class="contact-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>your.email@example.com</p>
+                    <p>tla1503@naver.com</p>
                 </a>
                 <a href="https://github.com/Qbooo" class="contact-card" target="_blank">
                     <i class="fab fa-github"></i>
                     <h3>GitHub</h3>
                     <p>@Qbooo</p>
-                </a>
-                <a href="#" class="contact-card" target="_blank">
-                    <i class="fas fa-blog"></i>
-                    <h3>Blog</h3>
-                    <p>your-blog.com</p>
-                </a>
-                <a href="#" class="contact-card" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Your Name</p>
                 </a>
             </div>
         </div>
@@ -371,7 +391,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 심규보. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

@@ -18,10 +18,9 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (scrollY >= (sectionTop - 200)) {
             current = section.getAttribute('id');
         }
@@ -38,7 +37,7 @@ window.addEventListener('scroll', () => {
 // 스크롤 애니메이션
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -80px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -50,10 +49,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// 애니메이션 대상 요소 설정
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.project-card, .skill-category, .contact-card, .stat-item');
-    
+    const animateElements = document.querySelectorAll(
+        '.project-card, .skill-category, .contact-card, .stat-item, .timeline-item'
+    );
+
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -62,57 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// About 모달 기능 (선택사항)
-const aboutButtons = document.querySelectorAll('.btn-demo');
-
-aboutButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        // 여기에 프로젝트 상세 정보 모달을 추가할 수 있습니다
-        alert('프로젝트 상세 정보는 준비 중입니다!');
-    });
-});
-
 // 네비게이션 바 스크롤 효과
-let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+    if (window.pageYOffset > 20) {
+        navbar.style.boxShadow = '0 2px 12px rgba(0,0,0,0.12)';
     } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
     }
-    
-    lastScroll = currentScroll;
 });
 
-// 타이핑 효과 (선택사항 - Hero 섹션에 적용 가능)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// 페이지 로드 시 환영 효과
+// 페이지 로드 시 페이드인
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
+    document.body.style.transition = 'opacity 0.4s ease';
     setTimeout(() => {
         document.body.style.opacity = '1';
-    }, 100);
+    }, 50);
 });
 
-console.log('Portfolio loaded successfully! 🚀');
+console.log('Portfolio loaded! 🚀');
