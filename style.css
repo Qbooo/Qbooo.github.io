@@ -102,7 +102,7 @@ body {
 
 /* ===== 섹션 스냅 ===== */
 section {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 /* ===== Hero 섹션 ===== */
