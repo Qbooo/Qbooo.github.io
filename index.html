@@ -35,8 +35,8 @@
             </h1>
             <p class="hero-subtitle">Server & Cloud Engineer</p>
             <p class="hero-description">
-                실 서비스를 직접 설계하고 배포하며,<br>
-                안정적인 인프라 운영에 관심이 많은 엔지니어입니다.
+                AWS EKS + GitOps로 MSA를 직접 설계·배포·운영하며,<br>
+                클라우드 네이티브 인프라 구축에 집중하는 엔지니어입니다.
             </p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
@@ -55,10 +55,11 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Java/Spring Boot 백엔드 개발 경험을 베이스로, AWS·Docker·CI/CD 등
-                        인프라 영역으로 성장하고 있습니다.
-                        실 서비스를 직접 설계·배포·운영하며 얻은 경험을 바탕으로,
-                        안정적이고 확장 가능한 시스템을 만드는 데 관심이 많습니다.
+                        AWS EKS 기반 클라우드 네이티브 인프라를 직접 설계·운영하며,
+                        서비스 안정성과 배포 자동화에 집중하고 있습니다.
+                        ArgoCD GitOps, Jenkins CI/CD, Kubernetes, Prometheus/Grafana까지
+                        운영 전 과정을 직접 구성한 경험을 바탕으로,
+                        확장 가능하고 관찰 가능한 시스템을 만드는 데 관심이 많습니다.
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
@@ -129,7 +130,7 @@
                         </div>
                         <div class="skill-item">
                             <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
-                            <span>AWS RDS</span>
+                            <span>DynamoDB</span>
                         </div>
                         <div class="skill-item">
                             <i class="fas fa-hdd"></i>
@@ -139,19 +140,27 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3>Infra / Cloud</h3>
+                    <h3>Container / Infra</h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <i class="devicon-docker-plain colored"></i>
                             <span>Docker</span>
                         </div>
                         <div class="skill-item">
-                            <i class="devicon-nginx-original colored"></i>
-                            <span>Nginx</span>
+                            <i class="devicon-kubernetes-plain colored"></i>
+                            <span>Kubernetes</span>
                         </div>
                         <div class="skill-item">
-                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
-                            <span>AWS EC2</span>
+                            <i class="fas fa-anchor"></i>
+                            <span>Helm</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-box"></i>
+                            <span>Harbor</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-nginx-original colored"></i>
+                            <span>Nginx</span>
                         </div>
                         <div class="skill-item">
                             <i class="fas fa-desktop"></i>
@@ -161,23 +170,45 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3>CI/CD & IaC</h3>
+                    <h3>CI/CD & GitOps</h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <i class="devicon-github-original"></i>
                             <span>GitHub Actions</span>
                         </div>
                         <div class="skill-item">
-                            <i class="devicon-kubernetes-plain colored"></i>
-                            <span>Kubernetes</span>
-                        </div>
-                        <div class="skill-item">
                             <i class="devicon-jenkins-plain colored"></i>
                             <span>Jenkins</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>n8n</span>
+                            <i class="fas fa-code-branch"></i>
+                            <span>ArgoCD</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-stream"></i>
+                            <span>Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AWS</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                            <span>EKS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Lambda</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Bedrock</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-key"></i>
+                            <span>IAM / SSM</span>
                         </div>
                     </div>
                 </div>
@@ -187,11 +218,19 @@
                     <div class="skill-items">
                         <div class="skill-item">
                             <i class="fas fa-chart-bar"></i>
-                            <span>Grafana / Prometheus</span>
+                            <span>Grafana</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Prometheus</span>
                         </div>
                         <div class="skill-item">
                             <i class="fas fa-search"></i>
                             <span>ELK Stack</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-eye"></i>
+                            <span>CloudWatch</span>
                         </div>
                     </div>
                 </div>
@@ -206,42 +245,7 @@
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
 
-                <!-- Project 1: ValanSe -->
-                <div class="project-card">
-                    <div class="project-banner project-banner-img">
-                        <img src="images/valanse.png" alt="ValanSe">
-                        <span class="project-period-badge live-badge">🟢 배포 중</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ValanSe</h3>
-                        <p class="project-subtitle">밸런스게임 투표 플랫폼</p>
-                        <p class="project-description">
-                            Spring Boot 3.2.5 + Next.js 기반 밸런스게임 투표 서비스.
-                            prod/dev/local 3개 환경 분리 구성, Kakao OAuth2 인증.
-                            EC2 + Nginx 실 배포 중.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Next.js</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Redis</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">EC2</span>
-                            <span class="tag">Nginx</span>
-                            <span class="tag">GitHub Actions</span>
-                        </div>
-                        <div class="project-buttons">
-                            <a href="https://valanse.kr/" class="project-btn btn-demo" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> 접속하기
-                            </a>
-                            <a href="https://github.com/ValanSee" class="project-btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: FWS (AllIsWell) -->
+                <!-- Project 1: FWS (AllIsWell) -->
                 <div class="project-card">
                     <div class="project-banner project-banner-img">
                         <img src="images/fws.png" alt="FWS">
@@ -271,29 +275,33 @@
                     </div>
                 </div>
 
-                <!-- Project 3: n8n 스터디 자동화 -->
+                <!-- Project 2: Global Bridge -->
                 <div class="project-card">
                     <div class="project-banner project-banner-img">
-                        <img src="images/n8n.png" alt="n8n">
-                        <span class="project-period-badge">2026.01</span>
+                        <img src="images/Gemini_Generated_Image_fhz18sfhz18sfhz1.png" alt="Global Bridge">
+                        <span class="project-period-badge">2026.03 — 2026.06</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Algorithm Study Automation</h3>
-                        <p class="project-subtitle">알고리즘 스터디 자동화 파이프라인</p>
+                        <h3 class="project-title">Global Bridge</h3>
+                        <p class="project-subtitle">외국인 근로자 금융 플랫폼 · MSA 백엔드</p>
                         <p class="project-description">
-                            n8n 워크플로우로 매일 알고리즘 문제를 자동 추천하고,
-                            GitHub 커밋 감지 시 Notion 스터디 플래너를 자동 업데이트하는
-                            이벤트 드리븐 자동화 시스템.
+                            Java 17 + Spring Boot 3.5 MSA 멀티모듈 백엔드.
+                            전자지갑·서류 AI 분석·커뮤니티 4개 서비스를 EKS에 배포.
+                            ArgoCD GitOps, Jenkins CI/CD, Harbor, Prometheus/Grafana
+                            모니터링까지 직접 구성.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">n8n</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">GitHub API</span>
-                            <span class="tag">Notion API</span>
-                            <span class="tag">Slack</span>
+                            <span class="tag">Spring Boot 3.5</span>
+                            <span class="tag">Java 17</span>
+                            <span class="tag">MSA</span>
+                            <span class="tag">EKS</span>
+                            <span class="tag">ArgoCD</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">Kafka</span>
+                            <span class="tag">AWS Bedrock</span>
                         </div>
                         <div class="project-buttons">
-                            <a href="https://github.com/Fisa-n8n-team/n8n-project" class="project-btn btn-github" target="_blank">
+                            <a href="https://github.com/Sangam-Beavers" class="project-btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -352,12 +360,12 @@
                     </div>
 
                     <div class="timeline-h-item">
-                        <div class="timeline-h-dot active"></div>
+                        <div class="timeline-h-dot"></div>
                         <div class="timeline-h-card">
                             <span class="timeline-period">2025.12 — 2026.06</span>
                             <h3 class="timeline-title">우리 FIS 아카데미</h3>
                             <p class="timeline-sub">클라우드 엔지니어링 6기</p>
-                            <span class="timeline-badge badge-active">진행 중</span>
+                            <span class="timeline-badge badge-done">수료</span>
                         </div>
                     </div>
 
