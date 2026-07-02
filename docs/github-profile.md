@@ -1,9 +1,9 @@
 # 👋 Hi! I'm Qbooo
 
-**Backend & Cloud Engineer**
+**Cloud & Infra Engineer**
 
-Java/Spring Boot 백엔드 개발 경험을 베이스로, AWS·Docker·CI/CD 등 인프라 영역으로 성장하고 있습니다.
-실 서비스를 직접 설계·배포·운영하며 얻은 경험을 바탕으로, 안정적이고 확장 가능한 시스템을 만드는 데 관심이 많습니다.
+기획부터 배포까지, 하나의 프로젝트를 처음부터 끝까지 직접 만들어보는 걸 좋아합니다.
+개발·인프라·클라우드를 넘나들며 시스템을 완성해가는 엔지니어입니다.
 
 ---
 
@@ -36,13 +36,17 @@ Java/Spring Boot 백엔드 개발 경험을 베이스로, AWS·Docker·CI/CD 등
 
 ## 🏆 Awards
 - 한국정보방송통신대연합 주관 2022 프로보노 ICT멘토링 공모전 입선상 (12.02)
+- 대학생 IT 연합 동아리 TAVE 우수회원상
+- 우리FISA 융합 해커톤 우수상
+- 우리FISA 클라우드 엔지니어링반 공로상
 
 ---
 
 ## 🏅 Certificates
 - SQLD (SQL 개발자)
 - 정보처리기사
-- OPic IH
+- 컴퓨터활용능력 1급
+- 리눅스마스터 1급
 
 ---
 
@@ -50,14 +54,16 @@ Java/Spring Boot 백엔드 개발 경험을 베이스로, AWS·Docker·CI/CD 등
 
 | 프로젝트 이름 | 역할 | 주요 기술 스택 | 기간 | 설명 |
 |---------------|------|----------------|------|------|
+| [Global Bridge](https://github.com/Sangam-Beavers) | 인프라/클라우드 엔지니어링 | Spring Boot 3.5, Java 17, MSA, AWS EKS, ArgoCD, Jenkins, Kafka, AWS Bedrock | 2026.03 ~ 2026.06 | 외국인 근로자 금융 플랫폼. MSA 백엔드를 EKS에 배포, ArgoCD GitOps·Jenkins CI/CD·Harbor·Prometheus/Grafana 모니터링 구성 |
+| [FWS](https://github.com/WooriFisa-CE06-AllIsWell) | 백엔드/인프라 설계 | Python, FastAPI, VMware vSphere, Docker | 2026.03 | VMware vSphere 기반 셀프서비스 VM 프로비저닝 플랫폼. 웹 UI로 VM 생성·삭제 자동화, Guacamole 웹 터미널 제공 |
+| [FCSS](https://github.com/Qbooo/FCSS) | 인프라 설계 및 보안 전략 | AWS EKS, Aurora, ElastiCache, MWAA(Airflow), ACM, Secrets Manager | 우리FISA 융합 해커톤 | 카드 소비 데이터를 게이미피케이션하는 금융 서비스의 인프라 아키텍처 및 가용성·기밀성·무결성·확장성·추적성 5원칙 보안 설계 — 우수상 수상 |
+| [Algorithm Study Automation](https://github.com/Fisa-n8n-team/n8n-project) | 워크플로우 설계 | n8n, Docker, GitHub API, Notion API, Slack | 2026.01 | n8n 워크플로우로 알고리즘 문제 자동 추천 및 GitHub 커밋 감지 시 Notion 자동 업데이트 |
+| [Valanse](https://github.com/ValanSee/ValanSe_Server) | 백엔드/클라우드/데이터베이스 설계 | Spring Boot, AWS, Docker, Github Action, MySQL | 2025.05 ~ 2025.08 | IT연합 동아리 TAVE, 밸런스게임 어플리케이션 서버 개발, 클라우드 아키택쳐 구축, 카카오 소셜 로그인, JWT, CI/CD |
+| [Scope](https://github.com/HSU-SCOPE-capstone2025) | 백엔드/클라우드/데이터베이스 설계 | Spring Boot, AWS, Docker, Python, MySQL | 2025.03 ~ 2025.05 | 한성대학교 캡스톤 디자인, sns 인플루언서 데이터 크롤링 및 DB 설계, 클라우드 아키택쳐 구축, Rest-api 개발 |
 | [Echo](https://github.com/Qbooo/echo/tree/kyubo) | 백엔드/데이터베이스 설계 | Spring Boot, React, MySQL, FireBase | 2024.09 - 2024.11 | 한성대학교 프리캡스톤, 백엔드 로직 구현과 GPT API 연결, 구글 소셜로그인, DB 설계 및 구축 |
 | [운동일기짱](https://github.com/uchunc/routinecareproject) | 로그인 및 프로필 페이지 구현 | Flutter, FireBase | 2024.09 - 2024.11 | 운동기록과 공유를 위한 앱 |
-| ROBOBUDDY | 데이터 수집 및 전처리 | Python | 2024.09 ~ 2024.11 | 한성대학교 온캠퍼스 인턴십, BeautifulSoup을 이용한 정적 웹 사이트 크롤링 및 데이터 전처리 |
 | 세이렌 | 안드로이드 앱 개발자 | Java, Android Studio | 2022.03 ~ 2022.08 | 2022 프로보노 ICT멘토링 공모전, 음성 인식 자막 앱 개발 |
-| [Scope](https://github.com/HSU-SCOPE-capstone2025) | 백엔드/클라우드/데이터베이스 설계 | Spring Boot, AWS, Docker, Python, MySQL | 2025.03 ~ 2025.05 | 한성대학교 캡스톤 디자인, sns 인플루언서 데이터 크롤링 및 DB 설계, 클라우드 아키택쳐 구축, Rest-api 개발 |
-| [Valanse](https://github.com/ValanSee/ValanSe_Server) | 백엔드/클라우드/데이터베이스 설계 | Spring Boot, AWS, Docker, Github Action, MySQL | 2025.05 ~ 2025.08 | IT연합 동아리 TAVE, 밸런스게임 어플리케이션 서버 개발, 클라우드 아키택쳐 구축, 카카오 소셜 로그인, JWT, CI/CD |
-| [FWS](https://github.com/WooriFisa-CE06-AllIsWell) | 백엔드/인프라 설계 | Python, FastAPI, VMware vSphere, Docker | 2026.03 | VMware vSphere 기반 셀프서비스 VM 프로비저닝 플랫폼. 웹 UI로 VM 생성·삭제 자동화, Guacamole 웹 터미널 제공 |
-| [Algorithm Study Automation](https://github.com/Fisa-n8n-team/n8n-project) | 워크플로우 설계 | n8n, Docker, GitHub API, Notion API, Slack | 2026.01 | n8n 워크플로우로 알고리즘 문제 자동 추천 및 GitHub 커밋 감지 시 Notion 자동 업데이트 |
+| ROBOBUDDY | 데이터 수집 및 전처리 | Python | 2024.09 ~ 2024.11 | 한성대학교 온캠퍼스 인턴십, BeautifulSoup을 이용한 정적 웹 사이트 크롤링 및 데이터 전처리 |
 
 ---
 

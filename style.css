@@ -269,18 +269,24 @@ section {
 .stat-item i {
     font-size: 2rem;
     color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.stat-item > div {
+    min-width: 0;
 }
 
 .stat-item h3 {
     font-size: 1rem;
     font-weight: 700;
     color: var(--text-dark);
+    word-break: keep-all;
 }
 
 .stat-item p {
     font-size: 0.82rem;
     color: var(--text-light);
-    white-space: nowrap;
+    word-break: keep-all;
 }
 
 /* ===== Skills 섹션 ===== */
@@ -373,9 +379,9 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.2rem;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -552,7 +558,7 @@ section {
 
 .timeline-h {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     position: relative;
     padding: 0;
 }
