@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: 비오위키
+  pageTitle: 비오위키 (BOwiki)
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
