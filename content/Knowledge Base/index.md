@@ -8,6 +8,14 @@ type: map
 ## 시작하기
 - [[비오위키]]
 
+## 인프라 기본 개념
+
+서버·네트워크·스토리지의 역할을 먼저 구별한 뒤 하나의 웹 요청이 각 계층을 지나는 흐름으로 연결해 읽을 수 있습니다.
+
+- 기반 자원: [[Server|서버]] · [[Networking|네트워크]] · [[Storage|스토리지]]
+- 전체 구조: [[3-Tier Architecture|3-Tier 아키텍처]]
+- 요청 처리: [[Web Server|WEB]] → [[Web Application Server|WAS]] → [[Database|DB]]
+
 ## 분류
 - [[Compute 분류|Compute]]
 - [[Storage 분류|Storage]]
@@ -16,3 +24,4 @@ type: map
 - [[Container 분류|Container]]
 - [[Cloud 분류|Cloud]]
 - [[Security 분류|Security]]
+- [[Business 분류|Business]]
