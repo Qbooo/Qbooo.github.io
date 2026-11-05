@@ -3,11 +3,13 @@ title: Cloud 분류
 type: map
 domain: Cloud
 ---
-## 이 분야에서 다루는 것
+## 분야 소개
+
+클라우드 자원의 제공·관리 방식, 인프라 자동화 도구, 서비스 플랫폼과 고객별 격리 개념을 정리합니다.
 
 ## 문서 목록
 
-- [[3-Tier Architecture|3-Tier 구조]]: WEB·WAS·DB의 책임·배치·요청 흐름과 장애 경계
+- [[3-Tier Architecture|3-Tier 구조]]: WEB·WAS·DB의 역할과 계층 분리의 이유
 
 - [[AI Infrastructure Architect|AI 인프라 아키텍트]]: AI 컴퓨팅·네트워크·스토리지의 통합 설계
 
@@ -23,4 +25,3 @@ domain: Cloud
 - [[Multi-tenancy]]: 여러 테넌트의 공유와 격리 구조
 - [[Microsoft Azure]]: Microsoft 클라우드의 서비스와 관리 구조
 
-## 아직 비어 있는 문서

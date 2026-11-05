@@ -3,11 +3,16 @@ title: Compute 분류
 type: map
 domain: Compute
 ---
-## 이 분야에서 다루는 것
+## 분야 소개
+
+서버와 프로그램 실행에 필요한 연산 자원, 물리·가상 실행 환경, AI 컴퓨팅 시스템의 개념을 정리합니다.
 
 ## 문서 목록
 
-- [[Server|서버]]: 물리 하드웨어·OS·VM·서비스 실행의 관계
+- [[Server|서버]]: 서버의 역할·종류·작동 원리와 발전 과정
+- [[CPU]]: 프로그램의 명령을 실행하는 처리 장치
+- [[Memory|메모리]]: 실행 중인 코드와 데이터를 보관하는 주기억장치
+- [[Physical Server Configuration|물리 서버 구성]]: 서버 내부 부품과 데이터센터 랙의 연결 구조
 - [[Web Server|WEB]]: HTTP 요청·정적 콘텐츠·리버스 프록시
 - [[Web Application Server|WAS]]: 업무 코드·동시 요청·연결 풀·애플리케이션 운영
 
@@ -19,5 +24,5 @@ domain: Compute
 - [[DGX]]: NVIDIA 통합 AI 시스템·플랫폼
 - [[HGX]]: 파트너 서버용 GPU 플랫폼
 
-## 아직 비어 있는 문서
+## 미작성 문서
 - [[vSphere]]

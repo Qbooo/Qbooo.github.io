@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 ## 1. 개요
@@ -20,7 +20,7 @@ Database(데이터베이스)는 관련 데이터를 정해진 구조와 규칙�
 
 이 문서는 관계형 DB를 중심으로, PostgreSQL을 구체적 동작 예시로 사용한다. 제품마다 프로세스·로그·복제·일관성 모델이 다르므로 PostgreSQL의 구현을 모든 DB의 공통 구조로 일반화하지 않는다.
 
-## 2. 테이블·키·인덱스는 무엇을 표현하는가
+## 2. 테이블·키·인덱스의 역할
 
 | 용어 | 의미 | 주문 서비스의 예 |
 |---|---|---|
@@ -61,7 +61,7 @@ flowchart TB
 4. 실행기가 테이블·인덱스·버퍼와 필요한 동시성 제어를 사용한다.
 5. 결과를 반환하거나 변경 사항을 트랜잭션의 완료 규칙에 따라 반영한다.[^querypath]
 
-이 흐름은 교육용 요약이다. 준비된 문장·계획 캐시·병렬 처리 등 실제 경로는 더 다양하다. 중요한 것은 “SQL 한 줄”도 접속·계획·실행·대기·전송으로 시간이 나뉜다는 점이다. DB가 빨리 계산했어도 WAS가 연결을 얻는 데 오래 걸리거나 큰 결과를 전송하는 데 시간이 들 수 있다.
+이 흐름은 교육용 요약이다. 미리 준비한 SQL 문(prepared statement)·실행 계획 캐시·병렬 처리 등 실제 경로는 더 다양하다. 중요한 것은 “SQL 한 줄”도 접속·계획·실행·대기·전송으로 시간이 나뉜다는 점이다. DB가 빨리 계산했어도 WAS가 연결을 얻는 데 오래 걸리거나 큰 결과를 전송하는 데 시간이 들 수 있다.
 
 인덱스는 별도 구조에서 후보 데이터의 위치를 찾아 접근량을 줄일 수 있다. 하지만 많은 행을 읽는 질의에는 순차 스캔이 더 효율적일 수 있고, 인덱스 유지에는 저장 공간과 쓰기 비용이 든다. `EXPLAIN`의 비용은 임의 비용 단위이며 밀리초 그 자체가 아니다. `EXPLAIN ANALYZE`는 실제 질의를 실행하므로 데이터 변경문·부하 영향까지 고려해야 한다.[^plan]
 
@@ -88,7 +88,7 @@ flowchart TB
 
 긴 트랜잭션은 잠금·정리·연결 점유에 영향을 줄 수 있고, 서로 상대가 가진 자원을 기다리면 교착 상태가 생길 수 있다. 격리 수준을 높이면 허용하는 이상 현상은 줄어들 수 있지만 실패·재시도와 처리 비용을 다뤄야 한다. 같은 Read Committed라는 이름도 제품별 세부 동작을 비교해야 한다.[^isolation]
 
-실무에서는 “DB가 느리다”를 질의 계산이 긴 상황, 잠금 대기, I/O 대기, 연결 대기와 구분한다. 잠금을 기다리는 세션을 무조건 종료하거나 VM CPU를 늘리기 전에 어떤 트랜잭션이 무엇을 기다리는지 확인하는 것이 원인 설명의 출발점이다.
+실무에서는 “DB가 느리다”를 질의 계산이 긴 상황, 잠금 대기, I/O 대기, 연결 대기와 구분한다. 잠금을 기다리는 세션을 무조건 종료하거나 VM CPU를 늘리기 전에 어떤 트랜잭션이 무엇을 기다리는지 확인하는 것이 원인을 파악하는 첫 단계이다.
 
 ## 7. 데이터가 저장되는 시점과 WAL
 
@@ -98,7 +98,7 @@ PostgreSQL의 WAL(Write-Ahead Logging)은 변경된 데이터 페이지를 저�
 
 DB 데이터와 로그가 원격 블록 볼륨에 있으면 그 영속성과 지연은 [[iSCSI]]·컨트롤러·매체 등 저장 경로와 연결된다. WAL의 동기 쓰기가 느릴 때 서버 CPU만 증설해도 커밋 대기가 해결되지 않을 수 있다.
 
-## 8. 복제·고가용성·백업은 다른 목적이다
+## 8. 복제·고가용성·백업의 목적과 차이
 
 | 수단 | 해결하려는 문제 | 추가로 필요한 판단 |
 |---|---|---|
@@ -113,22 +113,17 @@ PostgreSQL은 SQL dump·파일시스템 수준 백업·연속 로그 아카이�
 
 RPO·RTO는 업무 목표이고 제품 기능 이름이 아니다. 필요한 데이터 범위·복구 대상 시점·복구 환경의 용량·접속 전환까지 확인해야 목표 달성 여부를 말할 수 있다.
 
-## 9. 운영에서 확인할 증상과 지표
+## 9. 관계형 데이터베이스의 등장과 확장
 
-| 현상 | 관련 관측 |
-|---|---|
-| 접속 실패 | 네트워크·포트·인증·TLS·허용 규칙·최대 연결 |
-| 특정 SQL만 느림 | 실행 계획·읽은 행/페이지·통계·매개변수·잠금 |
-| 커밋이 지연 | WAL 동기화·스토리지 지연·동기 복제 대기 |
-| CPU 낮은데 업무 정체 | 잠금·I/O·연결 풀·외부 대기 |
-| 전체 용량 부족 | 데이터·인덱스·로그·임시 파일·아카이브 소비 |
-| Replica의 조회가 오래됨 | 복제 지연·Replay 상태·읽기 대상 선택 |
+데이터를 파일에 보관할 수 있어도, 데이터 사이의 관계를 찾는 방법이 파일의 물리 배치에 강하게 묶이면 새로운 질문을 할 때마다 프로그램을 바꾸어야 한다. 관계형 모델은 사용자가 저장 위치를 직접 따라가지 않고 데이터의 값과 관계를 바탕으로 질의하도록 하는 접근이다.
 
-PostgreSQL의 `pg_stat_activity`는 세션의 상태와 대기 정보를 보여 주고 통계 뷰는 테이블·I/O·복제 활동을 제공한다. 캐시 적중률 하나가 높다는 사실만으로 전체 지연이 정상인 것은 아니다. 현재 대기와 질의·요청량을 함께 해석한다.[^stats]
+IBM 연구원 Edgar F. Codd는 1970년 관계형 데이터 모델을 제안했다. 이후 IBM의 System R 연구와 SQL 개발 등은 선언적인 질의를 실제 실행 계획으로 바꾸는 기술의 발전으로 이어졌다. “어떤 데이터를 원하는가”를 표현하고 DBMS가 “어떻게 찾을 것인가”를 계획한다는 점이 관계형 DB를 이해하는 핵심이다.[^history]
 
-SQL 입력에는 매개변수화된 질의를 사용하고 계정에는 필요한 객체·작업 권한만 부여한다. 네트워크 접근·DB 인증·SQL 권한은 서로 다른 경계이며 비밀값과 TLS도 각각 관리해야 한다. 이 원칙은 보안 기능의 이름만 나열하기보다 애플리케이션이 어떤 계정으로 무엇을 할 수 있는지 설명하는 데 중요하다.[^security]
+예를 들어 주문 테이블과 고객 테이블을 고객 ID로 연결하면, 파일이 저장된 디스크 위치를 몰라도 특정 고객의 주문 목록을 조회할 수 있다. 인덱스는 조회 경로를, 트랜잭션은 변경의 완료 단위를, 동시성 제어는 여러 사용자의 접근을 관리한다. 이 기능들은 각각 다른 문제를 해결하면서 하나의 DBMS 안에서 함께 동작한다.
 
-## 10. 파일만 저장하는 방식보다 관리 기능이 필요한 이유
+관계형 DB 외에도 문서형·키-값형·그래프형 등 다양한 데이터 모델이 사용된다. 또 DBMS를 직접 설치하는 방식과 관리형 클라우드 서비스를 이용하는 방식이 공존한다. 데이터 모델은 정보를 어떻게 표현할지의 선택이고, 관리형 서비스는 누가 DB 기반 환경을 관리할지의 선택이므로 서로 구분해야 한다.
+
+## 10. 파일 저장과 DBMS의 차이
 
 파일은 데이터를 보관하는 기반이지만 여러 프로그램이 같은 데이터를 동시에 바꾸고 관계를 유지하며 원하는 조건으로 찾으려면 추가 규칙이 필요하다. DBMS는 그 구조·질의·동시성·복구를 공통 기능으로 제공한다. [[Data Warehouse]]는 분석 목적의 데이터 통합·질의에, [[Data Lake]]는 다양한 데이터의 보관·활용에 중점을 둔 시스템이므로 일반 업무 DB와 목적을 구분한다.
 
@@ -142,6 +137,8 @@ SQL 입력에는 매개변수화된 질의를 사용하고 계정에는 필요�
 
 ## 12. 출처
 
+[^history]: [IBM — The relational database](https://www.ibm.com/history/relational-database)
+
 [^architecture]: [PostgreSQL — Architectural Fundamentals](https://www.postgresql.org/docs/current/tutorial-arch.html)
 [^constraints]: [PostgreSQL — Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html)
 [^buffers]: [PostgreSQL — Resource Consumption: Memory](https://www.postgresql.org/docs/current/runtime-config-resource.html)
@@ -154,8 +151,7 @@ SQL 입력에는 매개변수화된 질의를 사용하고 계정에는 필요�
 [^ha]: [PostgreSQL — High Availability and Replication](https://www.postgresql.org/docs/current/high-availability.html)
 [^backup]: [PostgreSQL — Backup and Restore](https://www.postgresql.org/docs/current/backup.html)
 [^pitr]: [PostgreSQL — Continuous Archiving and PITR](https://www.postgresql.org/docs/current/continuous-archiving.html)
-[^stats]: [PostgreSQL — Statistics and activity](https://www.postgresql.org/docs/current/monitoring-stats.html)
-[^security]: [OWASP — SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
+
 [^querypath]: [PostgreSQL — The Path of a Query](https://www.postgresql.org/docs/current/query-path.html)
 [^btree]: [PostgreSQL — B-tree implementation](https://www.postgresql.org/docs/current/btree.html) · [Index Types](https://www.postgresql.org/docs/current/indexes-types.html)
 [^indexintro]: [PostgreSQL — Introduction to Indexes](https://www.postgresql.org/docs/current/indexes-intro.html)

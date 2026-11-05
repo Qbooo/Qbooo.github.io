@@ -3,7 +3,9 @@ title: Database 분류
 type: map
 domain: Database
 ---
-## 이 분야에서 다루는 것
+## 분야 소개
+
+데이터베이스의 저장·조회 원리와 데이터 분석을 위한 레이크·웨어하우스의 개념을 정리합니다.
 
 ## 문서 목록
 
@@ -12,4 +14,3 @@ domain: Database
 - [[Data Lake]]: 다양한 원본 데이터의 보관과 활용
 - [[Data Warehouse]]: 정제된 데이터의 통합 분석 시스템
 
-## 아직 비어 있는 문서
