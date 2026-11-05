@@ -5,14 +5,14 @@
 <rect width="1100" height="610" rx="20" fill="#f5f7fb"/>
 <g font-family="Malgun Gothic, sans-serif" fill="#172c46">
 <text x="48" y="56" font-size="28" font-weight="700">같은 ‘저장’이어도 접근하는 방식이 다르다</text>
-<text x="48" y="91" font-size="17" fill="#52657d">제품의 등급이나 HDD·SSD 구분이 아닌, 애플리케이션의 접근 모델 비교</text>
+<text x="48" y="91" font-size="17" fill="#52657d">세 방식 모두 논리적 인터페이스이며, HDD·SSD 같은 물리 매체의 구분이 아니다</text>
 <rect x="36" y="120" width="1028" height="126" rx="14" fill="#e6efff"/>
 <rect x="36" y="264" width="1028" height="126" rx="14" fill="#e3f4ee"/>
 <rect x="36" y="408" width="1028" height="126" rx="14" fill="#fff0dc"/>
 <g font-size="23" font-weight="700"><text x="62" y="161">Block</text><text x="62" y="305">File</text><text x="62" y="449">Object</text></g>
-<g font-size="17" fill="#52657d"><text x="62" y="193">블록 장치</text><text x="62" y="337">파일·디렉터리</text><text x="62" y="481">오브젝트</text></g>
+<g font-size="17" fill="#52657d"><text x="62" y="193">논리 블록 장치</text><text x="62" y="337">파일·디렉터리</text><text x="62" y="481">오브젝트</text></g>
 <g fill="#fff" stroke="#c2cfde"><rect x="226" y="143" width="258" height="77" rx="10"/><rect x="226" y="287" width="258" height="77" rx="10"/><rect x="226" y="431" width="258" height="77" rx="10"/><rect x="760" y="143" width="276" height="77" rx="10"/><rect x="760" y="287" width="276" height="77" rx="10"/><rect x="760" y="431" width="276" height="77" rx="10"/></g>
-<g font-size="19" text-anchor="middle"><text x="355" y="175">운영체제·애플리케이션</text><text x="355" y="203" font-size="16" fill="#52657d">파일시스템 사용 또는 raw 접근</text><text x="355" y="319">파일 클라이언트</text><text x="355" y="347" font-size="16" fill="#52657d">공유 경로의 파일 읽기·쓰기</text><text x="355" y="463">API 클라이언트</text><text x="355" y="491" font-size="16" fill="#52657d">객체 업로드·다운로드</text><text x="898" y="187">볼륨·블록 주소</text><text x="898" y="331">공유·파일 경로</text><text x="898" y="475">버킷·키 (S3 예)</text></g>
+<g font-size="19" text-anchor="middle"><text x="355" y="175">운영체제·애플리케이션</text><text x="355" y="203" font-size="16" fill="#52657d">파일시스템 사용 또는 raw 접근</text><text x="355" y="319">파일 클라이언트</text><text x="355" y="347" font-size="16" fill="#52657d">공유 경로의 파일 읽기·쓰기</text><text x="355" y="463">API 클라이언트</text><text x="355" y="491" font-size="16" fill="#52657d">객체 업로드·다운로드</text><text x="898" y="187">볼륨·논리 블록 주소</text><text x="898" y="331">공유·파일 경로</text><text x="898" y="475">버킷·키 (S3 예)</text></g>
 <g stroke="#52657d" stroke-width="2" marker-end="url(#arrow)"><path d="M503 185 H741"/><path d="M503 329 H741"/><path d="M503 473 H741"/></g>
 <g font-size="17" text-anchor="middle" fill="#52657d"><text x="622" y="168">iSCSI·FC 등</text><text x="622" y="312">NFS·SMB 등</text><text x="622" y="456">HTTP API 등</text></g>
 <text x="48" y="575" font-size="16" fill="#52657d">BOwiki 개념도 · 대표적인 접근 예시이며, 특정 제품의 전체 지원 사양을 뜻하지 않는다.</text>

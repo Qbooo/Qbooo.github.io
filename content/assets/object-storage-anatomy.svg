@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+<title id="title">오브젝트 스토리지에서 오브젝트의 구성과 저장 흐름</title>
+<desc id="desc">클라이언트가 버킷과 키로 API 요청을 보내면, 오브젝트 스토리지는 키, 메타데이터, 데이터로 이루어진 오브젝트를 논리 단위로 관리한다. 내부에서는 데이터를 여러 저장 노드와 물리 매체에 분산할 수 있다.</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0 L10 4 L0 8" fill="#52657d"/></marker>
+</defs>
+<rect width="1100" height="680" rx="20" fill="#f5f7fb"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#172c46">
+  <text x="48" y="58" font-size="28" font-weight="700">오브젝트는 ‘데이터 + 설명 + 식별자’를 묶은 논리 단위다</text>
+  <text x="48" y="92" font-size="17" fill="#52657d">새로운 물리 매체가 아니라, 스토리지 서비스가 API로 보여 주는 저장 단위</text>
+
+  <rect x="48" y="144" width="242" height="190" rx="14" fill="#e6efff"/>
+  <text x="72" y="182" font-size="21" font-weight="700">애플리케이션</text>
+  <text x="72" y="222" font-size="17">PUT · GET · DELETE</text>
+  <rect x="72" y="246" width="194" height="54" rx="9" fill="#ffffff" stroke="#c2cfde"/>
+  <text x="169" y="269" font-size="14" text-anchor="middle" fill="#52657d">버킷 study</text>
+  <text x="169" y="290" font-size="15" text-anchor="middle">키 photos/server.jpg</text>
+
+  <path d="M310 239 H390" stroke="#52657d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="350" y="220" font-size="16" text-anchor="middle" fill="#52657d">HTTPS API</text>
+
+  <rect x="410" y="124" width="360" height="294" rx="16" fill="#fff0dc" stroke="#e3bd86"/>
+  <text x="590" y="162" font-size="22" font-weight="700" text-anchor="middle">하나의 오브젝트</text>
+  <rect x="438" y="188" width="304" height="58" rx="9" fill="#ffffff" stroke="#dcc49f"/>
+  <text x="458" y="212" font-size="15" fill="#52657d">키 · 식별자</text>
+  <text x="458" y="235" font-size="17">photos/server.jpg</text>
+  <rect x="438" y="260" width="304" height="66" rx="9" fill="#ffffff" stroke="#dcc49f"/>
+  <text x="458" y="284" font-size="15" fill="#52657d">메타데이터 · 데이터에 대한 설명</text>
+  <text x="458" y="308" font-size="16">Content-Type, 사용자 정의 속성 등</text>
+  <rect x="438" y="340" width="304" height="54" rx="9" fill="#ffffff" stroke="#dcc49f"/>
+  <text x="458" y="364" font-size="15" fill="#52657d">데이터 · 실제 내용</text>
+  <text x="458" y="386" font-size="16">이미지 바이트</text>
+
+  <path d="M790 239 H870" stroke="#52657d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="830" y="220" font-size="16" text-anchor="middle" fill="#52657d">서비스 내부</text>
+
+  <rect x="890" y="144" width="162" height="190" rx="14" fill="#e3f4ee"/>
+  <text x="971" y="182" font-size="20" font-weight="700" text-anchor="middle">오브젝트 서비스</text>
+  <text x="971" y="220" font-size="15" text-anchor="middle">권한 · 버전</text>
+  <text x="971" y="247" font-size="15" text-anchor="middle">수명주기 · 복제</text>
+  <text x="971" y="274" font-size="15" text-anchor="middle">위치와 보호 관리</text>
+  <text x="971" y="306" font-size="14" text-anchor="middle" fill="#52657d">구현은 제품마다 다름</text>
+
+  <path d="M971 350 V420" stroke="#52657d" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="378" y="442" width="674" height="120" rx="14" fill="#e9edf3"/>
+  <text x="410" y="478" font-size="19" font-weight="700">내부 분산 저장 계층</text>
+  <g fill="#ffffff" stroke="#c2cfde">
+    <rect x="410" y="498" width="180" height="40" rx="8"/>
+    <rect x="625" y="498" width="180" height="40" rx="8"/>
+    <rect x="840" y="498" width="180" height="40" rx="8"/>
+  </g>
+  <g font-size="15" text-anchor="middle">
+    <text x="500" y="524">저장 노드 A · SSD/HDD</text>
+    <text x="715" y="524">저장 노드 B · SSD/HDD</text>
+    <text x="930" y="524">저장 노드 C · SSD/HDD</text>
+  </g>
+
+  <rect x="48" y="584" width="1004" height="58" rx="12" fill="#ffffff" stroke="#c2cfde"/>
+  <text x="72" y="609" font-size="16" font-weight="700">핵심</text>
+  <text x="128" y="609" font-size="16">사용자는 오브젝트 하나를 다루지만, 서비스는 내부에서 데이터를 여러 조각·복제본으로 배치할 수 있다.</text>
+  <text x="128" y="632" font-size="15" fill="#52657d">일반적인 S3 키의 ‘/’는 접두사 표현이며, POSIX 디렉터리 자체가 아니다.</text>
+</g>
+</svg>
