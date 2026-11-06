@@ -13,6 +13,10 @@ domain: Compute
 - [[CPU]]: 프로그램의 명령을 실행하는 처리 장치
 - [[Memory|메모리]]: 실행 중인 코드와 데이터를 보관하는 주기억장치
 - [[Physical Server Configuration|물리 서버 구성]]: 서버 내부 부품과 데이터센터 랙의 연결 구조
+- [[Virtualization|가상화]]: 물리 자원을 추상화해 여러 독립 실행 환경을 만드는 기술
+- [[Hypervisor|하이퍼바이저]]: VM의 실행과 물리 자원 접근을 중재하는 계층
+- [[Virtual Machine|가상 머신(VM)]]: 가상 하드웨어 위에서 독립된 OS와 프로그램을 실행하는 환경
+- [[Bare Metal|베어메탈]]: 운영체제나 하이퍼바이저가 물리 서버를 직접 사용하는 환경
 - [[Web Server|WEB]]: HTTP 요청·정적 콘텐츠·리버스 프록시
 - [[Web Application Server|WAS]]: 업무 코드·동시 요청·연결 풀·애플리케이션 운영
 

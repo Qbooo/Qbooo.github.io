@@ -24,6 +24,15 @@ type: map
 - 저장·통신: [[Disk|디스크]] · [[NIC]]
 - 실제 배치: [[Physical Server Configuration|물리 서버 구성]]
 
+## 가상화 기술
+
+물리 서버의 자원이 하이퍼바이저를 거쳐 VM의 가상 하드웨어로 제공되는 흐름과, 물리 장비를 직접 사용하는 베어메탈 환경의 차이를 연결해 읽을 수 있습니다.
+
+- 전체 원리: [[Virtualization|가상화]]
+- 실행·중재 계층: [[Hypervisor|하이퍼바이저]]
+- 가상 실행 환경: [[Virtual Machine|가상 머신(VM)]]
+- 물리 실행 환경: [[Bare Metal|베어메탈]]
+
 ## 분류
 - [[Compute 분류|Compute]]
 - [[Storage 분류|Storage]]
