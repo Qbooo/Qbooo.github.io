@@ -42,4 +42,4 @@ domain: Compute
 - [[HGX]]: 파트너 서버용 GPU 플랫폼
 
 ## 미작성 문서
-- [[vSphere]]
+- vSphere

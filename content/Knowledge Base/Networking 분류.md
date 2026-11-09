@@ -21,5 +21,5 @@ domain: Networking
 - [[GRE]]: 패킷을 다른 IP 패킷에 실어 보내는 터널링 프로토콜
 
 ## 미작성 문서
-- [[WireGuard]]
-- [[BGP]]
+- WireGuard
+- BGP

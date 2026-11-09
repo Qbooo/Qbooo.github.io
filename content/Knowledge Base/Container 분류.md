@@ -12,5 +12,5 @@ domain: Container
 - [[Harbor]]: 컨테이너 이미지·OCI 아티팩트 레지스트리
 
 ## 미작성 문서
-- [[Kubernetes]]
-- [[Pod]]
+- Kubernetes
+- Pod

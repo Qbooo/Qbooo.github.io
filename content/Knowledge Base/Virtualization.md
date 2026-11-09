@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-09
 ---
 
 ## 1. 개요
@@ -53,7 +53,7 @@ flowchart TB
 |---|---|---|
 | 물리 호스트 | CPU·메모리·저장장치·NIC가 들어 있는 실제 서버 | 랙에 장착된 x86 서버 |
 | [[Hypervisor]] | VM을 만들고 실행하며 물리 자원 접근을 중재하는 계층 | VMware ESXi, Microsoft Hyper-V, KVM |
-| [[Virtual Machine|VM]] | 가상 하드웨어와 게스트 OS를 가진 독립 실행 환경 | Linux 웹 서버 VM, Windows DB 서버 VM |
+| [[Virtual Machine\|VM]] | 가상 하드웨어와 게스트 OS를 가진 독립 실행 환경 | Linux 웹 서버 VM, Windows DB 서버 VM |
 | 게스트 OS | VM 안에서 실행되는 운영체제 | Ubuntu, RHEL, Windows Server |
 | 가상 장치 | 게스트에 보이는 CPU·메모리·디스크·NIC | vCPU, VHDX·QCOW2, virtio-net |
 | 관리 계층 | 여러 호스트와 VM의 생성·배치·정책·상태를 관리 | vCenter 계열 관리, libvirt 기반 도구, Hyper-V 관리 도구 |
