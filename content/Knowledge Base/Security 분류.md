@@ -9,5 +9,8 @@ domain: Security
 
 ## 문서 목록
 
+- [[Linux Accounts and Permissions|리눅스 계정과 권한]]: UID·GID, 파일·디렉터리 권한과 root·sudo
+- [[SSH]]: 호스트·사용자 인증과 암호화된 원격 접속
+
 - [[Air Gap]]: 물리적으로 연결하지 않고 수동 반입으로만 데이터를 옮기는 분리 경계
 

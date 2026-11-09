@@ -33,6 +33,21 @@ type: map
 - 가상 실행 환경: [[Virtual Machine|가상 머신(VM)]]
 - 물리 실행 환경: [[Bare Metal|베어메탈]]
 
+## 운영체제와 Linux
+
+하드웨어 위에서 Linux 커널이 자원을 관리하고, 사용자 공간의 셸과 프로그램이 시스템 호출을 통해 커널 기능을 사용하는 흐름으로 읽을 수 있습니다.
+
+- 전체 개념: [[Linux|리눅스]]
+- 시스템 계층과 요청 흐름: [[Linux Structure|리눅스 구조]]
+- 파일시스템의 경로와 역할: [[Linux Directory Structure|리눅스 디렉터리 구조]]
+- 명령줄 입력과 프로그램 연결: [[CLI]]
+- 명령 사용과 상태 확인: [[Linux Basic Commands|리눅스 기본 명령어]]
+- 사용자·그룹과 자원 접근: [[Linux Accounts and Permissions|리눅스 계정과 권한]]
+- 암호화된 원격 접속: [[SSH]]
+- 부팅 계층: [[Firmware|펌웨어]] → [[BIOS and UEFI|BIOS·UEFI]] → [[Bootloader|부트로더]] → [[Kernel|커널]]
+- 프로그램 실행: [[Compilation|컴파일]] → [[Program and Process|프로그램과 프로세스]]
+- 명령 입출력: [[Terminal|터미널]] → [[Shell|셸]]
+
 ## 분류
 - [[Compute 분류|Compute]]
 - [[Storage 분류|Storage]]
