@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 ## 1. 개요
@@ -80,6 +80,21 @@ id Qbo
 groups Qbo
 getent group developers
 ```
+
+### 사람 계정과 서비스 계정
+
+사람이 로그인해 작업하는 Qbo 계정과 웹 애플리케이션을 실행하기 위한 `appsvc` 계정은 목적이 다르다.
+
+| 구분 | 사람 계정 `Qbo` | 서비스 계정 `appsvc` |
+|---|---|---|
+| 목적 | 사용자의 로그인과 대화형 작업 | 특정 프로세스에 최소 권한 부여 |
+| 인증 | 비밀번호·SSH 키 등 필요 | 사람의 로그인 인증이 필요하지 않을 수 있음 |
+| 홈 | 일반적으로 `/home/Qbo` | 없거나 `/var/lib/myapp` 같은 상태 디렉터리 사용 |
+| 셸 | `/bin/bash` 같은 로그인 셸 | `/usr/sbin/nologin` 등으로 대화형 로그인 제한 가능 |
+| `sudo` | 직무상 필요한 명령만 정책에 따라 부여 | 일반적으로 부여하지 않음 |
+| 그룹 | 기본 그룹 하나와 필요한 보조 그룹 | 애플리케이션이 접근해야 할 자원의 그룹만 부여 |
+
+서비스 계정도 UID와 기본 GID를 가지며 필요하면 보조 그룹을 가질 수 있다. 비밀번호가 없어도 `systemd`는 서비스 설정의 `User=appsvc`와 `Group=appsvc`를 사용해 해당 신원으로 프로세스를 실행할 수 있다. 서비스 계정의 핵심은 사람이 대신 로그인하는 계정이 아니라 프로세스의 파일·소켓·장치 접근 범위를 제한하는 실행 신원이라는 점이다. 서비스 수명 관리는 [[Daemon|데몬]]에서 이어서 설명한다.
 
 ## 4. 로컬 계정 정보 파일
 
@@ -315,6 +330,22 @@ stat report.txt            # 파일 속성 상세 확인
 umask                      # 현재 기본 권한 마스크
 ```
 
+```bash
+sudo useradd -m -s /bin/bash Qbo       # 홈과 로그인 셸을 지정한 사람 계정
+sudo passwd Qbo                       # 비밀번호 설정·변경
+sudo groupadd developers              # 그룹 생성
+sudo usermod -aG developers Qbo       # 기존 목록을 유지하며 보조 그룹 추가
+sudo useradd -r -s /usr/sbin/nologin appsvc  # 시스템·서비스 계정 예시
+sudo passwd -l appsvc                 # 비밀번호 인증 잠금
+sudo userdel Qbo                      # 계정 삭제, 파일은 별도 확인
+```
+
+- `passwd`는 사용자 정보를 보는 명령이 아니라 비밀번호와 잠금·만료 상태를 관리한다. `passwd -S Qbo`로 상태를 볼 수 있다.
+- `usermod -aG`의 `-a`는 기존 보조 그룹 목록에 추가한다. `-a` 없이 `-G`를 사용하면 기존 목록이 대체될 수 있다. `-g`는 기본 그룹 변경이다.
+- `userdel -r`은 홈과 메일 스풀까지 제거할 수 있는 영향이 큰 작업이며, 다른 경로의 파일은 숫자 UID 소유로 남을 수 있다.
+- `id`는 UID·GID·그룹을 확인한다. 현재 로그인 세션은 `who`나 `w`로 확인한다.
+- `useradd`의 홈 생성 여부와 기본 셸은 배포판 설정에 따라 다를 수 있으므로 옵션과 `/etc/default/useradd`, `/etc/login.defs`를 함께 확인한다.[^useradd]
+
 계정을 만들고 그룹을 변경하는 명령은 배포판과 관리 정책에 따라 사용 방식이 다를 수 있다. 운영 서버에서는 수동으로 `/etc/passwd`를 편집하기보다 배포판의 계정 관리 도구나 조직의 디렉터리 서비스를 사용하고 UID·GID 중복과 홈 디렉터리 소유권을 함께 확인한다.
 
 ## 13. 관련 문서
@@ -322,6 +353,7 @@ umask                      # 현재 기본 권한 마스크
 - [[Linux]], [[Linux Structure|리눅스 구조]], [[Linux Directory Structure|리눅스 디렉터리 구조]]
 - [[CLI]], [[Linux Basic Commands|리눅스 기본 명령어]], [[Shell|셸]]
 - [[Program and Process|프로그램과 프로세스]], [[Kernel|커널]]
+- [[Daemon|데몬]]
 - [[Security 분류|Security]]
 
 ## 14. 출처
@@ -331,6 +363,7 @@ umask                      # 현재 기본 권한 마스크
 [^chmod]: [GNU Coreutils — Setting Permissions](https://www.gnu.org/software/coreutils/manual/html_node/Setting-Permissions.html)
 [^coreutils]: [GNU Coreutils — Changing File Attributes](https://www.gnu.org/software/coreutils/manual/coreutils.html#Changing-file-attributes)
 [^special]: [GNU Coreutils — Mode Structure](https://www.gnu.org/software/coreutils/manual/html_node/Mode-Structure.html)
+[^useradd]: [shadow-utils — `useradd(8)`](https://man7.org/linux/man-pages/man8/useradd.8.html), [`usermod(8)`](https://man7.org/linux/man-pages/man8/usermod.8.html), [`passwd(1)`](https://man7.org/linux/man-pages/man1/passwd.1.html)
 
 ## 둘러보기
 

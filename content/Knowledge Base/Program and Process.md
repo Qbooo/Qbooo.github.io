@@ -7,7 +7,7 @@ aliases: [프로그램과 프로세스, 프로그램, 프로세스]
 status: growing
 lang: ko
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 ## 1. 개요
@@ -110,11 +110,98 @@ NGINX:  시작 → 요청 대기 → 요청 처리 ─┐
 
 NGINX는 설정에 따라 정적 파일을 제공하는 웹 서버, 요청을 다른 서버로 전달하는 리버스 프록시, 여러 서버에 요청을 분산하는 애플리케이션 계층 로드밸런서 역할을 맡을 수 있다. 따라서 NGINX 자체를 항상 로드밸런서라고 단정하기보다 **설정에 따라 여러 역할을 수행할 수 있는 장기 실행 서버 프로그램**이라고 이해하는 것이 정확하다.
 
-## 7. 관련 문서와 출처
+장기 실행 프로세스의 역할, 전통적 데몬화와 `systemd` 관리 방식은 [[Daemon|데몬]]에서 자세히 다룬다.
+
+## 7. 셸의 작업과 백그라운드 실행
+
+```bash
+sleep 300 &
+```
+
+`300`은 PID가 아니라 기다릴 초이고, `&`는 셸이 자식 프로세스의 종료를 기다리지 않고 프롬프트를 돌려주게 하는 문법이다. Bash가 다음처럼 표시할 수 있다.
+
+```text
+[1] 1234
+```
+
+- `1`: 현재 셸이 관리하는 작업 번호
+- `1234`: 운영체제가 부여한 프로세스 PID
+
+`jobs`는 현재 셸의 작업을, `ps`는 운영체제가 관리하는 프로세스의 순간 목록을 보여 준다. 하나의 셸 작업은 파이프라인처럼 여러 프로세스로 구성될 수 있으므로 작업 번호와 PID는 같은 개념이 아니다.
+
+```bash
+jobs
+fg %1       # 1번 작업을 포그라운드로
+bg %1       # 멈춘 1번 작업을 백그라운드에서 계속
+```
+
+`Ctrl+Z`는 보통 포그라운드 작업에 정지 신호를 보내고, `Ctrl+C`는 인터럽트 신호를 보낸다. 백그라운드 작업은 셸과의 관계를 설명할 뿐, 지속적인 시스템 서비스를 제공하는 데몬과 같지 않다.
+
+## 8. 신호와 종료 요청
+
+신호(signal)는 커널이 프로세스에 비동기 사건을 알리는 방법이다. `kill`이라는 이름과 달리 기본 동작은 프로세스를 즉시 파괴하는 것이 아니라 신호를 보내는 것이다.[^signal]
+
+```bash
+kill 1234       # 기본값 SIGTERM(15)
+kill -15 1234   # 정리할 기회를 주는 종료 요청
+kill -9 1234    # SIGKILL, 커널이 강제 종료
+```
+
+| 신호 | 일반적 의미 |
+|---|---|
+| `SIGHUP(1)` | 터미널 단절 알림, 일부 데몬은 설정 재읽기로 사용 |
+| `SIGINT(2)` | 터미널의 인터럽트 요청, 일반적으로 `Ctrl+C` |
+| `SIGKILL(9)` | 잡거나 무시할 수 없는 강제 종료 |
+| `SIGTERM(15)` | 정상 정리를 요청하는 기본 종료 신호 |
+| `SIGCONT(18)` | 정지한 프로세스 계속 실행 |
+| `SIGSTOP(19)` | 잡거나 무시할 수 없는 정지 |
+
+가능하면 `SIGTERM`으로 파일·연결·임시 상태를 정리할 기회를 주고, 응답하지 않을 때 원인을 확인한 뒤 `SIGKILL`을 검토한다. 번호는 Linux의 일반적인 값이며 이식성이 필요한 스크립트에서는 이름을 사용하는 편이 분명하다.
+
+## 9. 프로세스 상태
+
+```text
+R  Running/Runnable      실행 중이거나 CPU를 기다림
+S  Interruptible sleep  사건을 기다리며 신호로 깨어날 수 있음
+D  Uninterruptible wait 주로 커널 I/O 완료를 기다림
+T  Stopped               신호나 디버깅으로 정지
+Z  Zombie                종료했지만 부모가 결과를 회수하지 않음
+```
+
+`S` 상태의 프로세스는 소켓·타이머·입력을 기다리며 정상적으로 잠든 경우가 많다. `D` 상태에서는 요청한 커널 작업이 안전한 지점에 도달할 때까지 일반 신호로 중단할 수 없으므로 `kill -9`도 즉시 완료되지 않을 수 있다. 장시간 쌓이는 `D`는 디스크·SAN·NFS·드라이버 경로를 조사할 단서이지만 짧은 `D` 자체가 곧 장애는 아니다.[^proc-stat]
+
+## 10. 좀비와 고아
+
+자식 프로세스가 종료하면 커널은 대부분의 메모리와 열린 자원을 회수하지만 PID·종료 코드·일부 회계 정보는 부모가 `wait()` 계열 호출로 결과를 받을 때까지 남긴다.
+
+```mermaid
+sequenceDiagram
+    participant P as 부모 프로세스
+    participant K as Linux 커널
+    participant C as 자식 프로세스
+    P->>K: 자식 생성
+    K->>C: 실행
+    C->>K: 종료 코드와 함께 exit
+    K-->>P: SIGCHLD 알림
+    Note over K,C: 최소 종료 정보만 남은 Z 상태
+    P->>K: wait()/waitpid()
+    K-->>P: PID와 종료 결과 반환
+    Note over K,C: 프로세스 항목 완전 회수
+```
+
+좀비는 이미 종료했으므로 CPU를 실행하거나 일반 사용자 메모리를 계속 사용하는 프로세스가 아니다. `kill -9`을 보내도 죽일 실행 흐름이 없다. 다만 장시간 많은 좀비가 쌓이면 PID와 커널 프로세스 관리 항목을 소모한다. 부모 프로그램이 자식 종료 결과를 제대로 회수하도록 작성·구성해야 한다.[^wait]
+
+고아는 부모가 먼저 종료했지만 자식은 아직 실행 중인 상태이다. PID 1 또는 지정된 subreaper가 자식을 인계받아 나중에 종료 결과를 회수할 수 있다. **종료한 자식이 남은 좀비**와 **부모 없이 실행 중인 고아**는 다른 개념이다.
+
+## 11. 관련 문서와 출처
 
 - [[Linux]], [[Linux Structure|리눅스 구조]], [[Kernel|커널]], [[Shell|셸]], [[Compilation|컴파일]]
+- [[Daemon|데몬]] · [[CPU Monitoring|CPU 모니터링]] · [[Memory Monitoring|메모리 모니터링]] · [[Linux Logging|Linux 로그]]
 
 [^fork]: [Linux man-pages — `fork(2)`](https://man7.org/linux/man-pages/man2/fork.2.html), [`execve(2)`](https://man7.org/linux/man-pages/man2/execve.2.html)
+[^signal]: Linux man-pages, [`signal(7)`](https://man7.org/linux/man-pages/man7/signal.7.html), [`kill(2)`](https://man7.org/linux/man-pages/man2/kill.2.html).
+[^proc-stat]: Linux man-pages, [`proc_pid_stat(5)`](https://man7.org/linux/man-pages/man5/proc_pid_stat.5.html).
+[^wait]: Linux man-pages, [`wait(2)`](https://man7.org/linux/man-pages/man2/wait.2.html).
 
 ## 둘러보기
 

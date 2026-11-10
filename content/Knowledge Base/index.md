@@ -48,6 +48,16 @@ type: map
 - 프로그램 실행: [[Compilation|컴파일]] → [[Program and Process|프로그램과 프로세스]]
 - 명령 입출력: [[Terminal|터미널]] → [[Shell|셸]]
 
+## Linux 시스템 운영
+
+계정의 실행 권한에서 프로세스와 서비스의 수명, 로그와 자원 지표까지 연결하여 Linux 서버의 현재 상태를 해석할 수 있습니다.
+
+- 실행 신원: [[Linux Accounts and Permissions|사용자·그룹 관리]]
+- 실행 단위와 상태: [[Program and Process|Process]]
+- 장기 서비스: [[Daemon]]
+- 사건 기록: [[Linux Logging|Log]]
+- 자원 관찰: [[CPU Monitoring|CPU 모니터링]] · [[Memory Monitoring|Memory 모니터링]]
+
 ## 분류
 - [[Compute 분류|Compute]]
 - [[Storage 분류|Storage]]

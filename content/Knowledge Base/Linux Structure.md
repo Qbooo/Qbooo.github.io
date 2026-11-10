@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 ## 1. 개요
@@ -153,6 +153,8 @@ flowchart LR
 
 데몬은 장시간 실행되며 요청이나 사건을 기다리는 프로세스라는 실행 형태에 초점이 있고, 서비스는 시스템이 제공하는 기능 또는 운영체제가 관리하는 단위에 초점이 있다. `sshd`는 SSH 서비스를 제공하는 데몬 프로세스라고 설명할 수 있다.
 
+전통적인 백그라운드 분리 방식과 `systemd`가 포그라운드 프로세스를 직접 관리하는 현대적 방식은 [[Daemon|데몬]]에서 구분한다. 서비스의 표준 출력·오류와 커널 사건이 수집되는 경로는 [[Linux Logging|Linux 로그]]에서 이어진다.
+
 ## 8. 터미널·셸·CLI의 위치
 
 [[Terminal|터미널]]은 문자 입력과 출력을 전달·표시하고, [[Shell|셸]]은 명령을 해석해 내장 기능을 수행하거나 외부 프로그램을 실행한다. CLI는 사용자가 문자 명령으로 시스템과 상호작용하는 인터페이스 방식 전체를 가리킨다.
@@ -193,6 +195,7 @@ NGINX가 실행 중인 Linux 서버에 요청이 들어오는 상황을 계층�
 - 파일 체계: [[Linux Directory Structure|리눅스 디렉터리 구조]]
 - 부팅 계층: [[Firmware|펌웨어]] · [[BIOS and UEFI|BIOS·UEFI]] · [[Bootloader|부트로더]]
 - 실행 계층: [[Kernel|커널]] · [[Program and Process|프로그램과 프로세스]] · [[Memory|메모리]] · [[CPU]]
+- 운영 관찰: [[Daemon|데몬]] · [[Linux Logging|Linux 로그]] · [[CPU Monitoring|CPU 모니터링]] · [[Memory Monitoring|메모리 모니터링]]
 - 명령 환경: [[Terminal|터미널]] · [[Shell|셸]] · [[Shell Script|셸 스크립트]]
 - 명령줄 인터페이스: [[CLI]]
 - 원격 접속: [[SSH]]
