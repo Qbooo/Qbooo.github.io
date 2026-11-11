@@ -11,8 +11,21 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-11
 ---
+
+## 목차
+
+- [[#1. 개요|1. 개요]]
+- [[#2. 이전 전략 속의 위치|2. 이전 전략 속의 위치]]
+- [[#3. Rehost와 Relocate의 차이|3. Rehost와 Relocate의 차이]]
+- [[#4. 장점과 한계|4. 장점과 한계]]
+- [[#5. 이전 뒤 최적화와 rightsizing|5. 이전 뒤 최적화와 rightsizing]]
+- [[#6. 벤더별 용어 차이|6. 벤더별 용어 차이]]
+- [[#7. 전략 선택의 판단 기준|7. 전략 선택의 판단 기준]]
+- [[#8. 이 문서가 다루지 않는 범위|8. 이 문서가 다루지 않는 범위]]
+- [[#9. 관련 문서|9. 관련 문서]]
+- [[#10. 출처|10. 출처]]
 
 ## 1. 개요
 
@@ -76,7 +89,7 @@ Microsoft Cloud Adoption Framework의 rationalize 문서는 목록이 다르다.
 
 Lift and Optimize라는 표현은 이 문서가 확인한 AWS 전략 페이지와 Microsoft 문서에는 나오지 않고, Google Cloud 문서에서 Replatform을 가리키는 이름으로 쓰인다.[^1][^2][^3]
 
-## 7. 선택할 때의 판단
+## 7. 전략 선택의 판단 기준
 
 AWS 전략 페이지는 대규모 이전에 흔히 쓰는 전략으로 rehost, replatform, relocate, retire를 들고, refactor는 대규모 이전에는 권하지 않으며 이전을 마친 뒤 현대화하라고 한다.[^1]
 

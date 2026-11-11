@@ -2,10 +2,22 @@
 title: Knowledge Base
 type: map
 ---
+## 목차
+
+- [[#소개|소개]]
+- [[#위키 안내|위키 안내]]
+- [[#인프라 기본 개념|인프라 기본 개념]]
+- [[#서버와 하드웨어|서버와 하드웨어]]
+- [[#가상화 기술|가상화 기술]]
+- [[#운영체제와 Linux|운영체제와 Linux]]
+- [[#Linux 시스템 운영|Linux 시스템 운영]]
+- [[#Linux 디스크 관리|Linux 디스크 관리]]
+- [[#분류|분류]]
+
 ## 소개
 모르는 개념을 만날 때마다 내 말로 정리하는 개념 사전입니다. 문서 상태는 `seed`(한 줄 정의), `growing`(채우는 중), `evergreen`(다듬어진 문서)로 표시합니다.
 
-## 시작하기
+## 위키 안내
 - [[비오위키]]
 
 ## 인프라 기본 개념
@@ -57,6 +69,17 @@ type: map
 - 장기 서비스: [[Daemon]]
 - 사건 기록: [[Linux Logging|Log]]
 - 자원 관찰: [[CPU Monitoring|CPU 모니터링]] · [[Memory Monitoring|Memory 모니터링]]
+
+## Linux 디스크 관리
+
+커널이 인식한 블록 장치가 파티션과 파일시스템을 거쳐 하나의 디렉터리 경로로 연결되는 순서로 읽을 수 있습니다.
+
+- 저장 장치와 블록 I/O: [[Disk|디스크]]
+- 디스크 구획과 파티션 테이블: [[Partition|파티션]]
+- 파일·디렉터리 관리 구조: [[Filesystem|파일시스템]] · [[Inode|inode]]
+- 경로 연결과 영구 설정: [[Mount|마운트]] · [[Fstab|fstab]]
+- 저장 공간 확인: [[Disk Capacity Check|디스크 용량 확인]]
+- 부팅 디스크의 연결: [[BIOS and UEFI|BIOS·UEFI]] → [[Bootloader|부트로더]] → 운영체제 파티션
 
 ## 분류
 - [[Compute 분류|Compute]]
