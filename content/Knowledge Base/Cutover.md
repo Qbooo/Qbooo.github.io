@@ -12,7 +12,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 ## 목차
@@ -117,6 +117,10 @@ Failover는 장애 대응 목적이라 최신 데이터의 일부를 잃을 수 
 - [[Server]]
 
 - [[Networking]]
+
+- [[DR 컷오버와 서비스 복구 순서]]
+
+- [[타깃 프로비저닝 방식에 따른 마이그레이션 절차]]
 
 ## 10. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 ## 목차
@@ -86,6 +86,8 @@ RMM은 원본 운영체제·디스크·네트워크와 대상 컴퓨팅 환경 �
 - [[Server]]
 
 - [[Networking]]
+
+- [[Questions/DR 직접 복제와 이미지 풀의 역할|DR 직접 복제와 이미지 풀의 역할]]
 
 ## 7. 출처
 

@@ -19,7 +19,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-12
 ---
 
 ## 목차
@@ -105,6 +105,10 @@ P2V를 이전하는 방식은 수동, 반자동, 자동으로 나눈다.[^1] 이
 - [[Replication Levels]]
 
 - [[Server]]
+
+- [[서버 마이그레이션의 네트워크 준비와 전환 시점]]
+
+- [[타깃 프로비저닝 방식에 따른 마이그레이션 절차]]
 
 ## 9. 출처
 

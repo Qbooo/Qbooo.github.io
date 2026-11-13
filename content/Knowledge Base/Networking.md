@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-12
 ---
 
 ## 목차
@@ -121,6 +121,7 @@ L4 로드밸런서는 전송 계층 연결·주소·포트 관점으로, L7 로�
 - [[Server]], [[Storage]], [[3-Tier Architecture]]
 - [[Web Server]], [[Web Application Server]], [[Database]]
 - [[CDN]], [[SNMP]], [[iSCSI]]
+- [[서버 마이그레이션의 네트워크 준비와 전환 시점]]
 
 ## 9. 출처
 

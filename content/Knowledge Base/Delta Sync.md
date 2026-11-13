@@ -11,7 +11,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 ## 목차
@@ -117,6 +117,8 @@ RackWare는 DR 자료에서 연속 복제와 근접 0에 가까운 RPO를 내세
 - [[Replication Levels]]
 
 - [[Agentless Migration]]
+
+- [[Questions/DR 직접 복제와 이미지 풀의 역할|DR 직접 복제와 이미지 풀의 역할]]
 
 ## 11. 출처
 
