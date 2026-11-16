@@ -13,6 +13,7 @@ type: map
 - [[#운영체제와 Linux|운영체제와 Linux]]
 - [[#Linux 시스템 운영|Linux 시스템 운영]]
 - [[#Linux 디스크 관리|Linux 디스크 관리]]
+- [[#네트워크 기초|네트워크 기초]]
 - [[#분류|분류]]
 
 ## 소개
@@ -85,6 +86,20 @@ type: map
 - 경로 연결과 영구 설정: [[Mount|마운트]] · [[Fstab|fstab]]
 - 저장 공간 확인: [[Disk Capacity Check|디스크 용량 확인]]
 - 부팅 디스크의 연결: [[BIOS and UEFI|BIOS·UEFI]] → [[Bootloader|부트로더]] → 운영체제 파티션
+
+## 네트워크 기초
+
+한 LAN 안에서 프레임이 전달되는 과정부터 여러 사업자의 네트워크가 인터넷으로 연결되는 과정까지 순서대로 읽을 수 있습니다.
+
+- 통신 단위와 헤더: [[Encapsulation|캡슐화]]
+- 주소와 전달 방식: [[IP Address and Subnet|IP 주소와 서브넷]] · [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]]
+- 로컬 전달과 출구: [[ARP]] · [[Default Gateway|기본 게이트웨이]]
+- 논리적 L2 분리: [[VLAN]]
+- 로컬 네트워크: [[NIC]] → [[Switch|스위치]]
+- 네트워크 간 전달: [[Router|라우터]] → [[Internet Routing|인터넷의 통신 구조]]
+- 인터넷 경로 교환: [[BGP]] → [[IXP Peering and Transit|IXP·피어링·트랜짓]]
+- 사업자 핵심망: [[Backbone Network|백본 네트워크]]
+- 전체 개요: [[Networking|네트워크]]
 
 ## 분류
 - [[Compute 분류|Compute]]
