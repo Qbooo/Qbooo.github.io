@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 ## 목차
@@ -131,7 +131,7 @@ CIDR은 고정된 클래스 크기를 가변 길이 프리픽스로 바꾸었다
 - **연속된 /24 네 개는 언제나 /22 하나로 합쳐진다는 생각**: 시작 블록이 4의 배수로 정렬되어 있어야 한다. `1.0`부터 `4.0`까지는 합쳐지지 않는다.
 - **서브넷이 다르면 스위치가 막는다는 생각**: 스위치는 IP를 보지 않는다. 송신 호스트가 마스크로 "다른 네트워크"라고 판단해 게이트웨이로 보내려 하기 때문에 직접 전달되지 않는다.
 - **같은 IP를 다른 마스크로 함께 쓸 수 있다는 생각**: 호스트 주소로는 같은 L2에 같은 IP를 둘 수 없다. 마스크가 서로 다르면 호스트마다 "같은 네트워크"의 범위가 달라 한쪽에서만 도달되는 비대칭 통신이 생길 수 있다. 반면 `/24`와 그 안의 `/28`은 경로로는 함께 존재할 수 있으며 Longest Prefix Match가 구체적인 쪽을 고른다.
-- **브로드캐스트 주소도 호스트에 줄 수 있다는 생각**: 호스트 비트가 모두 1인 주소는 네트워크 전체를 가리키므로 호스트에 할당하지 않는다.
+- **브로드캐스트 주소도 호스트에 줄 수 있다는 생각**: 일반적인 IPv4 서브넷에서는 호스트 비트가 모두 1인 주소가 네트워크 전체를 가리키므로 호스트에 할당하지 않는다. 다만 브로드캐스트 개념이 필요 없는 라우터 간 Point-to-Point 링크에서는 `/31`의 두 주소를 모두 종단 주소로 사용할 수 있다.[^rfc3021]
 
 ## 9. 관련 문서
 
@@ -144,6 +144,7 @@ CIDR은 고정된 클래스 크기를 가변 길이 프리픽스로 바꾸었다
 
 [^rfc950]: IETF, [RFC 950, Internet Standard Subnetting Procedure](https://www.rfc-editor.org/rfc/rfc950.html). 2.1절 Interpretation of Internet Addresses의 네트워크·서브넷·호스트 필드와 예약된 모두 0·모두 1 값, 2.2절 Changes to Host Software to Support Subnets의 마스크를 이용한 로컬 여부 판단.
 [^rfc919]: IETF, [RFC 919, Broadcasting Internet Datagrams](https://www.rfc-editor.org/rfc/rfc919.html). 7절의 호스트 번호가 모두 1인 Directed Broadcast 정의.
+[^rfc3021]: IETF, [RFC 3021, Using 31-Bit Prefixes on IPv4 Point-to-Point Links](https://www.rfc-editor.org/rfc/rfc3021.html). Point-to-Point 링크에서 `/31`의 두 주소를 종단 주소로 사용하는 예외.
 [^rfc791]: IETF, [RFC 791, Internet Protocol](https://www.rfc-editor.org/rfc/rfc791.html). 3.2절 Addressing의 Class A, B, C 주소 형식.
 [^rfc4632]: IETF, [RFC 4632, Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan](https://www.rfc-editor.org/rfc/rfc4632.html). 2절 History and Problem Description의 클래스 기반 체계의 문제, 3.1절 Basic Concept and Prefix Notation의 가변 길이 프리픽스, 4절 Address Assignment and Routing Aggregation과 4.1절의 집약 조건과 한계, 6절의 사업자 집약 예시.
 [^rfc1812]: IETF, [RFC 1812, Requirements for IP Version 4 Routers](https://www.rfc-editor.org/rfc/rfc1812.html). 2.2.5.2절 Classless Inter Domain Routing (CIDR)의 가장 구체적인 일치 경로 사용.

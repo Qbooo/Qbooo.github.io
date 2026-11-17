@@ -11,7 +11,7 @@ parent:
 status: growing
 lang: ko
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-17
 resolved: true
 resolved_at: 2026-11-11
 ---
@@ -57,6 +57,8 @@ flowchart LR
 
 ## 관련 문서
 
+- [[Load Balancing|로드 밸런싱]]
+- [[L4 and L7 Load Balancing|L4·L7 로드 밸런싱]]
 - [[3-Tier Architecture]]
 - [[Web Server]]
 - [[Web Application Server]]

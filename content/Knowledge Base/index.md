@@ -91,6 +91,7 @@ type: map
 
 한 LAN 안에서 프레임이 전달되는 과정부터 여러 사업자의 네트워크가 인터넷으로 연결되는 과정까지 순서대로 읽을 수 있습니다.
 
+- 계층 모델: [[OSI and TCP-IP Models|OSI 7계층과 TCP/IP 4계층]]
 - 통신 단위와 헤더: [[Encapsulation|캡슐화]]
 - 주소와 전달 방식: [[IP Address and Subnet|IP 주소와 서브넷]] · [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]]
 - 로컬 전달과 출구: [[ARP]] · [[Default Gateway|기본 게이트웨이]]
@@ -99,6 +100,8 @@ type: map
 - 네트워크 간 전달: [[Router|라우터]] → [[Internet Routing|인터넷의 통신 구조]]
 - 인터넷 경로 교환: [[BGP]] → [[IXP Peering and Transit|IXP·피어링·트랜짓]]
 - 사업자 핵심망: [[Backbone Network|백본 네트워크]]
+- 주요 네트워크 서비스: [[DNS]] · [[NAT]] · [[Load Balancing|로드 밸런싱]]
+- 서비스 분산 계층: [[L4 and L7 Load Balancing|L4·L7 로드 밸런싱]]
 - 전체 개요: [[Networking|네트워크]]
 
 ## 분류

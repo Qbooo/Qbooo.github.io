@@ -10,7 +10,7 @@ parent:
 status: growing
 lang: ko
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-17
 resolved: true
 resolved_at: 2026-11-11
 ---
@@ -43,6 +43,7 @@ resolved_at: 2026-11-11
 
 ## 관련 문서
 
+- [[DNS]]
 - [[Networking]]
 - [[Server]]
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 ## 목차
@@ -79,7 +79,7 @@ TPID와 TCI(PCP, DEI, VID)로 이루어진 구조이다.[^wiki8021q] 12비트 VI
 
 - **태그의 부착과 제거**: Trunk 링크에서 보내는 장치가 태그를 붙이고, 받는 장치가 태그를 제거한 뒤 해당 VLAN으로 전달한다.[^cisco8021q]
 - **프레임의 변화**: 프레임이 바뀌므로 FCS를 다시 계산해야 하고, 최대 프레임 크기는 1,518바이트에서 1,522바이트로 늘어난다.[^cisco8021q][^wiki8021q]
-- **Native VLAN**: Native VLAN의 프레임은 태그 없이 전달되고 Trunk의 나머지 VLAN은 모두 태그가 붙는다. 태그 없는 프레임은 Native VLAN에 속하는 것으로 간주한다. Trunk 양쪽의 Native VLAN이 같아야 하며 다르면 트래픽이 잘못 전달될 수 있다.[^cisco8021q][^wiki8021q]
+- **Native VLAN**: IEEE 802.1Q Trunk의 기본 동작에서는 Native VLAN의 프레임을 태그 없이 보내고, 나머지 VLAN의 프레임에는 태그를 붙인다. Trunk로 들어온 태그 없는 프레임은 해당 포트의 Native VLAN에 속하는 것으로 간주한다. 장비에 따라 Native VLAN에도 태그를 붙이도록 설정할 수 있으며, Trunk 양쪽의 Native VLAN과 태그 처리 방식이 다르면 트래픽이 잘못 전달될 수 있다.[^cisco8021q][^ciscotrunk][^wiki8021q]
 
 쉽게 설명하면 사내 우편 수레(Trunk)에 영업부와 인사부 우편을 함께 싣되 봉투마다 부서 스티커(태그)를 붙여 구분하고, 각 부서 책상(Access 포트)에 전달할 때는 스티커를 떼는 방식이다. 이 비유는 태그의 크기가 정해져 있고 프레임 크기와 검사값까지 바뀐다는 점은 설명하지 못한다.
 
@@ -131,6 +131,7 @@ IP 주소는 끝까지 유지되고 MAC 주소는 구간마다 바뀐다. 각 VL
 
 [^ciscovlan]: Cisco, [VLAN Configuration Guide, Configure VLAN (Catalyst 9000)](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/vlan/vlan-configuration-guide/configure-vlan.html). VLAN의 정의와 트래픽 범위, Access 포트와 Trunk 포트, VLAN 할당, VLAN 사이 트래픽과 SVI.
 [^cisco8021q]: Cisco, [Inter-Switch Link and IEEE 802.1Q Frame Format](https://www.cisco.com/c/en/us/support/docs/lan-switching/8021q/17056-741-4.html). 4바이트 태그의 위치, 태그 부착과 제거, FCS 재계산, Native VLAN, 태그 필드와 VID 크기.
+[^ciscotrunk]: Cisco, [VLAN Configuration Guide - Configure VLAN Trunking](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/vlan/vlan-configuration-guide/configure-vlan-trunks.html). Native VLAN의 기본 비태그 전송과 Native VLAN 태깅 설정.
 [^wiki8021q]: Wikipedia, [IEEE 802.1Q](https://en.wikipedia.org/wiki/IEEE_802.1Q). 표준의 범위, TPID와 TCI의 구조, 사용 가능한 VID와 예약 값, 프레임 크기와 FCS 영향, Native VLAN. 보조 자료이다.
 [^ciscopress]: Cisco Press, [CCNA 200-301 Official Cert Guide, Volume 1 발췌 (VLAN Routing with Router 802.1Q Trunks, VLAN Routing with Layer 3 Switch SVIs)](https://www.ciscopress.com/articles/article.asp?p=2990405). 라우터가 라우팅을 하고 스위치가 VLAN을 만드는 구성, L3 스위치의 SVI.
 [^cfg]: Computing for Geeks, [Cisco Router-on-a-Stick Inter-VLAN Routing](https://computingforgeeks.com/cisco-router-on-a-stick-inter-vlan-routing/). 스위치 쪽 Trunk와 VLAN별 802.1Q 서브인터페이스 게이트웨이 구성. 실습 가이드이며 보조 자료이다.

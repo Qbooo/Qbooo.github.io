@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 ## 목차
@@ -94,7 +94,7 @@ Anycast에는 적합하지 않은 경우도 있다. 라우팅 결정은 하나�
 ## 7. 흔한 오해
 
 - **Broadcast가 스위치의 모든 포트로만 간다는 생각**: 범위는 스위치 하나가 아니라 같은 L2 broadcast domain 전체이며, 스위치가 여러 대여도 같은 VLAN이면 포함된다.
-- **Broadcast가 서브넷 경계를 넘는다는 생각**: Limited Broadcast는 전달되지 않고, Directed Broadcast도 라우터에서 기본적으로 차단된다.
+- **Broadcast가 서브넷 경계를 자유롭게 넘는다는 생각**: Limited Broadcast는 라우터가 전달하지 않는다. Directed Broadcast는 목적지 서브넷까지 라우팅될 수 있는 형식이지만, 증폭 공격 방지를 위해 현대 라우터에서는 전달 기능을 기본적으로 비활성화한다.
 - **Multicast가 Broadcast의 다른 이름이라는 생각**: Multicast는 그룹에 가입한 호스트만 받는다.
 - **Anycast가 새로운 주소 종류나 패킷 형식이라는 생각**: Unicast 주소 공간의 주소를 여러 곳에서 광고하는 방식이다.
 - **Anycast가 항상 지리적으로 가장 가까운 서버로 간다는 생각**: 가까움의 기준은 라우팅이다. 보통 가까운 노드가 선택되지만 지리적 거리와 항상 일치하지는 않는다.

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 ## 목차
@@ -36,7 +36,7 @@ IP 패킷은 종단 사이에서 유지되는 주소로 목적지를 가리키�
 
 ## 3. 요청과 응답
 
-ARP 테이블에 해당 IP의 항목이 없으면 호스트는 ARP 요청을 만들어 **같은 이더넷 케이블의 모든 스테이션에게 브로드캐스트**한다. 요청에는 보내는 쪽의 MAC 주소와 IP 주소, 그리고 MAC 주소를 알고 싶은 대상 IP 주소가 들어 있고, 알고 싶은 대상 MAC 주소 칸은 비워 둔다.[^rfc826]
+ARP 테이블에 해당 IP의 항목이 없으면 호스트는 ARP 요청을 만들어 **같은 L2 브로드캐스트 도메인, 일반적으로 같은 VLAN의 모든 장치에 브로드캐스트**한다. 요청에는 보내는 쪽의 MAC 주소와 IP 주소, 그리고 MAC 주소를 알고 싶은 대상 IP 주소가 들어간다. 대상 MAC 주소는 아직 알 수 없는 값이므로 ARP 요청에서 의미가 없으며, 일반적인 구현에서는 모두 0으로 채운다.[^rfc826][^rfc5227]
 
 요청을 받은 호스트 가운데 대상 IP가 자신의 주소인 호스트만 응답한다. 응답하는 호스트는 요청의 보내는 쪽 필드와 받는 쪽 필드를 맞바꾸고 자신의 주소를 채운 뒤, **요청한 호스트의 MAC 주소로 유니캐스트**한다.[^rfc826] 요청에 보내는 쪽 주소가 이미 들어 있으므로 응답은 브로드캐스트할 필요가 없다.
 
@@ -92,6 +92,7 @@ ARP 요청은 브로드캐스트이므로 같은 L2 broadcast domain 안에서�
 ## 9. 출처
 
 [^rfc826]: IETF, [RFC 826, An Ethernet Address Resolution Protocol](https://www.rfc-editor.org/rfc/rfc826.html). Packet Generation의 요청 구성과 브로드캐스트, Packet Reception의 테이블 갱신과 응답의 유니캐스트 전송.
+[^rfc5227]: IETF, [RFC 5227, IPv4 Address Conflict Detection](https://www.rfc-editor.org/rfc/rfc5227.html). 1.1절의 ARP 요청 형식에서 Target Hardware Address를 모두 0으로 채우는 설명.
 [^rfc1122]: IETF, [RFC 1122, Requirements for Internet Hosts: Communication Layers](https://www.rfc-editor.org/rfc/rfc1122.html). 2.3.2.1 ARP Cache Validation의 항목 무효화 방식과 ARP 폭주 방지.
 
 ## 둘러보기
