@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-18
 ---
 
 ## 목차
@@ -31,7 +31,7 @@ NGOS(NextGen Object Storage)는 Zadara의 [[Object Storage|오브젝트 스토�
 
 공식 사용자 가이드에서는 버전 23.03에서 도입되었으며, 기존 [[ZIOS|VPSA Object Storage]]와 함께 제공되는 서비스로 설명한다.[^1]
 
-[[Object Storage|오브젝트 스토리지]]는 데이터를 오브젝트 단위로 저장하고 API로 접근하는 방식이다. NGOS는 S3 및 Swift 호환 REST API를 제공한다. 여기서 S3 호환은 AWS S3의 모든 기능이 동일하다는 뜻은 아니며, 지원되는 API와 동작 범위를 확인해야 한다.[^2]
+[[Object Storage|오브젝트 스토리지]]는 데이터를 오브젝트 단위로 저장하고 API로 접근하는 방식이다. NGOS는 [[S3 API]] 및 Swift 호환 REST API를 제공한다. 여기서 S3 호환은 AWS S3의 모든 기능이 동일하다는 뜻은 아니며, 지원되는 API와 동작 범위를 확인해야 한다.[^2]
 
 ## 2. 요청 처리와 저장 용량을 따로 확장하는 구조
 

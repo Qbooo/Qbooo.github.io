@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-18
 ---
 
 ## 목차
@@ -146,6 +146,11 @@ RPO는 허용 가능한 데이터 손실 구간, RTO는 허용 가능한 복구 
 클라우드의 볼륨·공유·버킷은 사용자가 디스크의 실제 위치를 직접 선택하지 않고 저장 기능을 사용하도록 한다. 그러나 데이터는 여전히 실제 매체에 저장된다. 현대 스토리지의 변화는 “저장할 장치”를 넘어 “어떤 방식과 단위로 데이터를 제공할 것인가”까지 소프트웨어와 서비스로 관리한다는 점에 있다.
 
 ## 9. 관련 문서
+
+- 저장 계층: [[VFS]] · [[Linux Block Layer]] · [[RAID]]
+- 블록 네트워크: [[SAN]] · [[iSCSI]]
+- 파일 공유: [[NAS]] · [[NFS]] · [[SMB]]
+- 오브젝트 접근: [[Object Storage|오브젝트 스토리지]] · [[S3 API]]
 
 - [[Server]], [[Networking]], [[Database]]
 - [[Block Storage]], [[File Storage]], [[Object Storage]], [[iSCSI]]

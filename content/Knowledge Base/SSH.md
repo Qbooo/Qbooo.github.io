@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-11
+updated: 2026-11-18
 ---
 
 ## 목차
@@ -129,6 +129,33 @@ SSH는 서로 다른 두 대상을 확인한다.
 | 호스트 키 | 접속한 서버가 의도한 서버인지 | 서버 | 클라이언트의 `known_hosts` |
 | 사용자 키 | 접속자가 Qbo 개인 키 보유자인지 | Qbo의 클라이언트 | 서버 Qbo의 `authorized_keys` |
 
+### 네 종류의 키 쌍과 대칭 세션 키
+
+공개 키 인증으로 SSH에 접속하면 서버와 클라이언트에 장기 인증 키 쌍과 임시 키 교환 키 쌍이 각각 등장한다. 전체로 보면 공개 키·개인 키 쌍이 네 종류이며, 여기서 실제 데이터 암호화용 대칭 세션 키를 별도로 파생한다.[^rfc4251]
+
+| 키 쌍 | 개인 키를 보관하는 위치 | 공개 값의 위치 | 역할 |
+|---|---|---|---|
+| 서버 호스트 키 | SSH 서버 | 클라이언트의 `known_hosts` 또는 신뢰 체계 | 접속한 서버의 신원 증명 |
+| 사용자 인증 키 | SSH 클라이언트 | 서버 계정의 `authorized_keys` | 접속 사용자의 개인 키 보유 증명 |
+| 서버 임시 키 교환 키 | 서버 메모리 | 현재 연결의 클라이언트에 전달 | 공동 비밀 계산 |
+| 클라이언트 임시 키 교환 키 | 클라이언트 메모리 | 현재 연결의 서버에 전달 | 공동 비밀 계산 |
+
+```mermaid
+flowchart LR
+    SH[서버 호스트 키 쌍] --> SI[서버 신원 확인]
+    UA[사용자 인증 키 쌍] --> UI[사용자 신원 확인]
+    SE[서버 임시 키 쌍] --> K[공동 비밀]
+    CE[클라이언트 임시 키 쌍] --> K
+    K --> C2S[클라이언트 → 서버 대칭 키]
+    K --> S2C[서버 → 클라이언트 대칭 키]
+    C2S --> DATA[명령·응답·파일 암호화]
+    S2C --> DATA
+```
+
+대칭 세션 키는 공개 키·개인 키 한 쌍이 아니다. 양쪽이 키 교환으로 계산한 공동 비밀에서 방향별로 파생한 일회성 통신 키이다. SSH 연결이 끝나면 폐기하며, 긴 연결에서는 Rekey를 통해 새 키로 교체할 수 있다.
+
+비밀번호 인증을 선택하면 사용자 인증 키 쌍은 사용하지 않는다. 그러나 서버 호스트 키, 양쪽의 임시 키 교환과 대칭 세션 키는 여전히 사용하므로 비밀번호도 암호화된 SSH 통로 안에서 전달된다.
+
 ### 서버 호스트 키
 
 서버는 호스트 개인 키로 키 교환 내용을 서명한다. 클라이언트는 호스트 공개 키와 서명을 확인하고 이전에 기록한 키와 비교한다.
@@ -178,6 +205,55 @@ Qbo 데스크톱 개인 키 B ↔  서버에 등록된 공개 키 B
 ```
 
 공개 키에서 대응하는 개인 키를 현실적인 계산량으로 역산하거나 다른 개인 키로 유효한 서명을 만드는 것이 어렵도록 설계된다. 과거 접속 서명은 현재 연결 데이터와 맞지 않기 때문에 그대로 재사용할 수 없다.
+
+### Linux 클라이언트에서 Windows 서버로 접속하는 키 배치
+
+접속 방향이 Linux에서 Windows라고 해서 모든 개인 키가 어느 한쪽에만 모이는 것은 아니다. SSH 공개 키 로그인에서는 `누구의 신원을 증명하는가`에 따라 개인 키의 위치가 결정된다.
+
+```mermaid
+flowchart LR
+    subgraph L[Linux SSH 클라이언트]
+        UP[Linux 사용자 개인 키]
+        KH[known_hosts<br/>Windows Host 공개 키]
+    end
+    subgraph W[Windows SSH 서버]
+        AK[authorized_keys<br/>Linux 사용자 공개 키]
+        HP[Windows Host 개인 키]
+    end
+    UP -->|사용자 인증 서명| AK
+    HP -->|서버 인증 서명| KH
+```
+
+| 확인 대상 | 개인 키 보유자 | 공개 키를 확인하는 위치 |
+|---|---|---|
+| Windows 서버의 신원 | Windows SSH 서버 | Linux 클라이언트의 `known_hosts` |
+| Linux 접속 사용자의 신원 | Linux SSH 클라이언트 | Windows 대상 계정의 `authorized_keys` |
+
+Linux에서 사용자 키 쌍을 만들면 개인 키는 Linux에만 보관하고 공개 키만 Windows의 로그인 대상 계정에 등록한다. Windows OpenSSH의 기본 공개 키 위치는 계정 종류에 따라 다르다.[^winssh]
+
+```text
+일반 사용자
+C:\Users\사용자명\.ssh\authorized_keys
+
+로컬 Administrators 그룹 사용자
+C:\ProgramData\ssh\administrators_authorized_keys
+```
+
+관리자용 `administrators_authorized_keys`는 Windows ACL 요구사항도 맞아야 한다. 실제 경로는 Windows OpenSSH의 `sshd_config`에서 `AuthorizedKeysFile`과 관리자 그룹에 대한 `Match` 설정으로 변경할 수 있으므로 서버의 유효 설정을 기준으로 확인한다.
+
+Windows OpenSSH Server는 처음 `sshd`를 사용할 때 서버 신원용 Host Key를 일반적으로 `C:\ProgramData\ssh` 아래에 생성한다.[^winssh] Linux가 처음 접속하면 Windows가 Host 공개 키를 제시하고 Linux는 지문을 승인할지 묻는다. 승인한 공개 키는 별도의 `.pub` 파일로 복사되는 것이 아니라 Linux 사용자의 `~/.ssh/known_hosts` 한 항목으로 기록된다.
+
+```text
+접속 전 준비
+Linux 사용자 공개 키 → Windows authorized_keys에 등록
+
+첫 접속
+Windows Host 공개 키 → Linux가 지문 확인 → known_hosts에 기록
+
+어느 경우에도 개인 키는 상대에게 전달하지 않음
+```
+
+비밀번호 인증을 사용하면 Linux 사용자 인증 키 쌍은 생략할 수 있다. 그러나 Windows Host Key를 이용한 서버 확인과 양쪽의 임시 키 교환·세션 암호화는 여전히 이루어진다.
 
 ## 5. 인감도장에 빗댄 공개 키 인증
 
@@ -303,9 +379,49 @@ ssh Qbo@server.example.com 'hostname'
 | `/etc/ssh/ssh_host_*_key` | 서버 호스트 개인 키 |
 | `~Qbo/.ssh/authorized_keys` | Qbo 로그인을 허용할 사용자 공개 키 목록 |
 
-경로와 포함 설정의 동작은 배포판과 OpenSSH 빌드에 따라 달라질 수 있다. `sshd -T`는 서버가 해석한 유효 설정 확인에 사용할 수 있지만 관리자 권한과 서버 환경을 고려해야 한다.
+### `authorized_keys`와 `known_hosts`의 방향
 
-OpenSSH는 개인 키와 `authorized_keys`의 소유권·권한이 지나치게 넓으면 안전하지 않다고 판단해 사용을 거부할 수 있다. 일반적인 사용자 홈 구성 사례는 다음과 같다.
+한 컴퓨터는 SSH 서버이면서 동시에 다른 서버에 접속하는 SSH 클라이언트가 될 수 있다. 그래서 같은 사용자 홈의 `.ssh` 디렉터리에 `authorized_keys`와 `known_hosts`가 함께 존재할 수 있지만 두 파일이 확인하는 대상은 반대이다.
+
+```mermaid
+flowchart LR
+    C[외부 SSH 클라이언트<br/>사용자 개인 키] -->|로그인 요청과 서명| A[현재 계정의<br/>authorized_keys]
+    A -->|등록된 사용자 공개 키로 검증| IN[현재 계정으로 들어오는 접속]
+    K[현재 SSH 클라이언트의<br/>known_hosts] -->|저장된 서버 Host 공개 키와 비교| S[접속하려는 원격 SSH 서버]
+```
+
+| 파일 | 확인하는 대상 | 저장 내용 | 기억할 질문 |
+|---|---|---|---|
+| `authorized_keys` | 현재 계정으로 들어오려는 사용자 | 로그인을 허용할 사용자 공개 키 목록 | 누가 이 계정으로 들어올 수 있는가 |
+| `known_hosts` | 현재 사용자가 접속하려는 원격 서버 | 이전에 확인한 서버 Host 공개 키 | 지금 접속한 서버가 전에 확인한 서버인가 |
+
+`authorized_keys`는 공개 키 파일의 경로를 저장하지 않는다. 공개 키 내용을 일반적으로 한 줄에 하나씩 저장한다. 원래의 `.pub` 파일이 서버에 남아 있지 않아도 이 파일의 공개 키 내용으로 사용자 서명을 검증할 수 있다.
+
+```text
+클라이언트 개인 키
+        ↓ 현재 연결 데이터에 서명
+서버 authorized_keys의 대응 공개 키
+        ↓ 서명 검증
+사용자 인증 성공 또는 실패
+```
+
+`known_hosts`는 처음 접속한 서버의 Host 공개 키를 기록하고 다음 접속부터 비교한다. 값이 갑자기 달라지면 서버 재설치·교체일 수도 있고 중간자 공격일 수도 있으므로 원인을 확인해야 한다. 서버 이름과 주소는 평문 또는 해시된 형태로 기록될 수 있다.
+
+### 파일과 디렉터리 권한
+
+OpenSSH는 개인 키와 `authorized_keys`의 소유권·권한이 지나치게 넓으면 안전하지 않다고 판단해 사용을 거부할 수 있다. 일반적인 사용자 홈 구성은 `.ssh` 디렉터리 `700`, `authorized_keys`와 개인 키 `600`이다. `known_hosts`에는 공개 정보가 들어가므로 `644`도 사용할 수 있지만 접속 대상 이름과 주소의 노출 범위를 줄이기 위해 더 제한할 수 있다.
+
+```text
+~/.ssh                  drwx------  700
+~/.ssh/authorized_keys  -rw-------  600
+~/.ssh/id_ed25519       -rw-------  600
+~/.ssh/id_ed25519.pub   -rw-r--r--  644
+~/.ssh/known_hosts      -rw-r--r--  644 또는 더 제한된 권한
+```
+
+공개 키는 인증 비밀이 아니지만 주석에 사용자·장치 이름이, `known_hosts`에는 접속 대상 정보가 포함될 수 있으므로 외부 공개 전에는 내용을 확인해야 한다. 개인 키는 어떤 경우에도 공개하면 안 된다.
+
+필요한 권한은 다음과 같이 설정할 수 있다.
 
 ```bash
 chmod 700 ~/.ssh
@@ -313,7 +429,7 @@ chmod 600 ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/id_ed25519
 ```
 
-실제 소유자와 상위 홈 디렉터리 권한도 함께 확인해야 하며 Windows에서는 파일 권한 표현 방식이 다를 수 있다.
+경로와 포함 설정의 동작은 배포판과 OpenSSH 빌드에 따라 달라질 수 있다. 실제 소유자와 상위 홈 디렉터리 권한도 함께 확인해야 하며 Windows에서는 파일 권한 표현 방식이 다를 수 있다. `sshd -T`는 서버가 해석한 유효 설정 확인에 사용할 수 있지만 관리자 권한과 서버 환경을 고려해야 한다.
 
 ## 10. 반복 접속을 위한 클라이언트 설정
 
@@ -347,6 +463,40 @@ sftp Qbo@server.example.com
 
 - `scp`는 SSH 연결을 이용해 파일을 복사하는 명령이다.
 - `sftp`는 SSH 위에서 동작하는 파일 전송 서브시스템이다. 이름이 비슷한 FTP와 별개의 프로토콜이다.
+
+NAT 뒤의 SSH 서버로 파일을 보낼 때는 NAT 경계에 공개된 주소와 외부 포트를 사용한다. 먼저 경계 장비에 `공인 주소의 TCP 40022 → 내부 서버의 TCP 22`와 같은 DNAT·포트 포워딩이 있어야 한다.
+
+```text
+클라이언트
+   ↓ 공인 주소:40022
+NAT 경계
+   ↓ DNAT
+내부 SSH 서버:22
+```
+
+```bash
+scp -i ~/.ssh/target-key -P 40022 report.txt user@203.0.113.10:/home/user/
+```
+
+| 부분 | 의미 |
+|---|---|
+| `-i ~/.ssh/target-key` | 사용자 인증 개인 키 지정 |
+| `-P 40022` | NAT 경계의 외부 SSH 포트 지정 |
+| `report.txt` | 로컬에서 보낼 파일 |
+| `user@203.0.113.10` | 원격 계정과 문서용 예시 공인 주소 |
+| `/home/user/` | 원격 서버의 저장 경로 |
+
+`ssh`의 포트 옵션은 소문자 `-p`이지만 `scp`는 대문자 `-P`이다. `scp -p`는 파일의 시각과 모드를 보존하는 별도 옵션이다. 디렉터리 전체는 `-r`을 추가하고, 원격 파일을 가져올 때는 원격 경로를 명령의 원본 위치에 둔다.
+
+```bash
+# 디렉터리를 원격 서버로 전송
+scp -r -i ~/.ssh/target-key -P 40022 ./reports user@203.0.113.10:/home/user/
+
+# 원격 파일을 현재 디렉터리로 가져오기
+scp -i ~/.ssh/target-key -P 40022 user@203.0.113.10:/home/user/report.txt ./
+```
+
+포트 포워딩·VPN·Bastion처럼 NAT 경계를 통과할 진입 경로가 없다면 인터넷의 클라이언트가 사설 주소의 SSH 서버로 직접 `scp`를 보낼 수 없다.
 
 포트 포워딩은 SSH 연결 안에 다른 TCP 연결을 운반한다.
 
@@ -411,6 +561,7 @@ ssh -v Qbo@server.example.com
 - [[Linux]], [[Linux Structure|리눅스 구조]], [[Linux Accounts and Permissions|리눅스 계정과 권한]]
 - [[CLI]], [[Shell|셸]], [[Terminal|터미널]], [[Linux Basic Commands|리눅스 기본 명령어]]
 - [[Networking]], [[GRE]], Bastion
+- [[TLS]] · [[Digital Signature and Certificate|전자서명과 인증서]] · [[Firewall]] · [[Security Group]]
 - [[Security 분류|Security]], [[Networking 분류|Networking]]
 
 ## 16. 출처
@@ -418,6 +569,8 @@ ssh -v Qbo@server.example.com
 [^ssh]: [OpenBSD Manual Pages — `ssh(1)`](https://man.openbsd.org/ssh.1), [`sshd(8)`](https://man.openbsd.org/sshd.8)
 [^hostcheck]: [OpenBSD Manual Pages — `ssh_config(5)`, `StrictHostKeyChecking` and `UserKnownHostsFile`](https://man.openbsd.org/ssh_config)
 [^sshd]: [OpenBSD Manual Pages — `sshd(8)`, Authorized Keys File Format](https://man.openbsd.org/sshd.8#AUTHORIZED_KEYS_FILE_FORMAT)
+[^rfc4251]: IETF, [RFC 4251, The Secure Shell (SSH) Protocol Architecture](https://www.rfc-editor.org/rfc/rfc4251.html). SSH Transport의 서버 인증·기밀성·무결성, User Authentication과 Connection Protocol의 역할 및 방향별 암호화 키.
+[^winssh]: Microsoft Learn, [Key-Based Authentication in OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)와 [OpenSSH Server Configuration for Windows](https://learn.microsoft.com/en-us/windows-server/administration/OpenSSH/openssh-server-configuration). Windows Host Key 생성 위치, 일반 사용자와 관리자 계정의 공개 키 등록 파일 및 권한.
 
 - [OpenBSD Manual Pages — `sshd_config(5)`](https://man.openbsd.org/sshd_config)
 - [OpenBSD Manual Pages — `ssh-keygen(1)`](https://man.openbsd.org/ssh-keygen.1)

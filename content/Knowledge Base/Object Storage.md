@@ -11,7 +11,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-18
 ---
 
 ## 목차
@@ -73,7 +73,7 @@ flowchart LR
 
 ## 6. 접근 방식
 
-클라이언트는 엔드포인트와 자격 증명 등을 설정하고 오브젝트의 업로드·다운로드·삭제·목록 조회를 수행한다. 보통 HTTP 기반 API를 사용한다.
+클라이언트는 엔드포인트와 자격 증명 등을 설정하고 오브젝트의 업로드·다운로드·삭제·목록 조회를 수행한다. 보통 HTTP 기반 API를 사용한다. [[S3 API]]에서는 Access Key ID가 자격 증명을 식별하고 Secret Access Key가 HMAC 요청 서명에 사용된다. 이는 공개키·개인키 쌍이 아니다.
 
 파일시스템처럼 임의 위치의 바이트를 수정하는 기능을 당연히 제공한다고 가정하면 안 된다. 예를 들어 S3 GetObject의 Range는 일부 바이트를 읽는 기능이며, 기존 객체의 임의 위치를 덮어쓰는 기능과 다르다.[^v-range] S3 directory bucket에는 조건에 맞는 append 기능도 있으므로 “오브젝트는 항상 전체 교체만 가능”이라고 일반화해서는 안 된다.[^v-append]
 
@@ -103,12 +103,15 @@ Amazon S3는 서비스 이름이고, S3 호환은 그 API에 맞춰 접근할 �
 
 NGOS·ZIOS는 S3 및 Swift API 접근을 제공한다. 실제 지원 기능은 각 제품 버전의 가이드로 확인한다.[^3][^4]
 
+NetApp은 회사 이름이며 모든 제품이 오브젝트 스토리지인 것은 아니다. StorageGRID는 분산 오브젝트 스토리지 제품이고, ONTAP도 S3 접근 기능을 제공한다. 같은 S3 호환 표현을 사용하더라도 지원 범위와 운영 구조는 제품별로 확인해야 한다.
+
 ## 10. 관련 문서
 
 - [[Block Storage|블록 스토리지]]
 - [[File Storage|파일 스토리지]]
 - [[NGOS]]
 - [[ZIOS]]
+- [[S3 API]]
 
 - [[Data Lake]]
 - [[Data Warehouse]]

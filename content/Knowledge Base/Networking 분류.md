@@ -21,6 +21,7 @@ domain: Networking
 - [[OSI and TCP-IP Models|OSI 7계층과 TCP/IP 4계층]]: 통신 기능을 역할별로 나누는 두 계층 모델과 실제 프로토콜의 대응
 - [[Encapsulation|캡슐화]]: 상위 계층의 데이터를 계층별 헤더로 감싸고 수신 측에서 벗겨 내는 방식
 - [[IP Address and Subnet|IP 주소와 서브넷]]: 32비트 IPv4 주소를 마스크와 CIDR 프리픽스로 나누고 묶으며 경로를 고르는 방식
+- [[Public and Private IP|공인 IP와 사설 IP]]: 전역·내부 고유성, NAT를 통한 인터넷 통신과 VPN 중복 대역 문제
 - [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]]: 목적지 주소가 가리키는 수신자의 범위에 따른 네 가지 전달 방식
 - [[ARP]]: 같은 로컬 네트워크에서 다음 홉의 IP 주소에 해당하는 MAC 주소를 알아내는 프로토콜
 - [[Default Gateway|기본 게이트웨이]]: 호스트가 다른 네트워크로 가는 패킷을 먼저 넘기는 같은 서브넷의 라우터 인터페이스
@@ -31,6 +32,10 @@ domain: Networking
 - [[NAT]]: 패킷의 주소·포트를 변환하고 응답을 복원하기 위한 상태를 관리하는 기능
 - [[Load Balancing|로드 밸런싱]]: 여러 Backend를 하나의 서비스 진입점 뒤에 두고 상태와 정책에 따라 요청을 분산하는 방식
 - [[L4 and L7 Load Balancing|L4·L7 로드 밸런싱]]: 연결 정보와 애플리케이션 요청 정보를 이용하는 두 분산 방식의 차이
+- [[Firewall|방화벽]]: 서로 다른 신뢰 영역 사이의 패킷과 연결 상태를 정책으로 허용·차단하는 기능
+- [[Security Group]]: 클라우드 가상 인터페이스에 연결하는 논리적 네트워크 허용 정책
+- [[HTTP and HTTPS|HTTP와 HTTPS]]: 웹 요청·응답과 TLS로 보호되는 HTTPS의 접속 구조
+- [[TLS]]: 통신 상대 인증, 임시 키 합의와 양방향 데이터 보호
 - [[Internet Routing|인터넷의 통신 구조]]: 독립된 여러 네트워크가 다음 홉을 이어 목적지까지 전달하는 체계
 - [[BGP]]: AS 사이에서 IP 프리픽스의 도달 경로와 정책을 교환하는 프로토콜
 - [[IXP Peering and Transit|IXP·피어링·트랜짓]]: 네트워크 간 직접 교환 기반과 상호접속 관계

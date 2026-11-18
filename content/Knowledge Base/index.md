@@ -13,7 +13,9 @@ type: map
 - [[#운영체제와 Linux|운영체제와 Linux]]
 - [[#Linux 시스템 운영|Linux 시스템 운영]]
 - [[#Linux 디스크 관리|Linux 디스크 관리]]
+- [[#스토리지 기초|스토리지 기초]]
 - [[#네트워크 기초|네트워크 기초]]
+- [[#네트워크 보안|네트워크 보안]]
 - [[#분류|분류]]
 
 ## 소개
@@ -87,13 +89,24 @@ type: map
 - 저장 공간 확인: [[Disk Capacity Check|디스크 용량 확인]]
 - 부팅 디스크의 연결: [[BIOS and UEFI|BIOS·UEFI]] → [[Bootloader|부트로더]] → 운영체제 파티션
 
+## 스토리지 기초
+
+물리 매체가 운영체제의 블록 계층을 거쳐 파일로 보이는 과정과, 같은 저장 공간을 네트워크에서 블록·파일·오브젝트 가운데 어떤 인터페이스로 제공하는지 연결해 읽을 수 있습니다.
+
+- 저장 계층: [[Disk|디스크]] → [[Linux Block Layer]] → [[Filesystem|파일시스템]] → [[VFS]]
+- 디스크 구성: [[RAID]]
+- 접근 방식: [[Block Storage|블록]] · [[File Storage|파일]] · [[Object Storage|오브젝트]]
+- 원격 블록: [[SAN]] · [[iSCSI]]
+- 원격 파일: [[NAS]] · [[NFS]] · [[SMB]]
+- 오브젝트 API: [[S3 API]] · [[NGOS]] · [[ZIOS]]
+
 ## 네트워크 기초
 
 한 LAN 안에서 프레임이 전달되는 과정부터 여러 사업자의 네트워크가 인터넷으로 연결되는 과정까지 순서대로 읽을 수 있습니다.
 
 - 계층 모델: [[OSI and TCP-IP Models|OSI 7계층과 TCP/IP 4계층]]
 - 통신 단위와 헤더: [[Encapsulation|캡슐화]]
-- 주소와 전달 방식: [[IP Address and Subnet|IP 주소와 서브넷]] · [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]]
+- 주소와 전달 방식: [[IP Address and Subnet|IP 주소와 서브넷]] · [[Public and Private IP|공인 IP와 사설 IP]] · [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]]
 - 로컬 전달과 출구: [[ARP]] · [[Default Gateway|기본 게이트웨이]]
 - 논리적 L2 분리: [[VLAN]]
 - 로컬 네트워크: [[NIC]] → [[Switch|스위치]]
@@ -103,6 +116,15 @@ type: map
 - 주요 네트워크 서비스: [[DNS]] · [[NAT]] · [[Load Balancing|로드 밸런싱]]
 - 서비스 분산 계층: [[L4 and L7 Load Balancing|L4·L7 로드 밸런싱]]
 - 전체 개요: [[Networking|네트워크]]
+
+## 네트워크 보안
+
+통신 경계의 허용 정책부터 웹과 원격 접속에서 상대를 확인하고 데이터를 암호화하는 흐름으로 읽을 수 있습니다.
+
+- 네트워크 허용 정책: [[Firewall|방화벽]] · [[Security Group]]
+- 웹 보안 통신: [[HTTP and HTTPS|HTTP와 HTTPS]] → [[TLS]]
+- 신뢰 기반: [[Digital Signature and Certificate|전자서명과 인증서]]
+- 원격 접속: [[SSH]]
 
 ## 분류
 - [[Compute 분류|Compute]]
