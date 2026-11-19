@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-17
+updated: 2026-11-19
 ---
 
 ## 목차
@@ -146,6 +146,7 @@ NAT가 없는 단순한 예에서는 출발지·목적지 IP가 유지되고 MAC
 ## 7. 관련 문서
 
 - [[Switch|스위치]] · [[Router|라우터]] · [[BGP]]
+- [[IGP]] · [[OSPF]] · [[IS-IS]]
 - [[IXP Peering and Transit|IXP·피어링·트랜짓]] · [[Backbone Network|백본 네트워크]]
 - [[Networking]] · [[CDN]]
 

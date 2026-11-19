@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-18
+updated: 2026-11-19
 ---
 
 ## 목차
@@ -132,8 +132,8 @@ sequenceDiagram
 - [[Web Server]], [[Web Application Server]], [[Database]]
 - [[OSI and TCP-IP Models|OSI 7계층과 TCP/IP 4계층]] → [[Encapsulation|캡슐화]] → [[네트워크 장비별 처리 계층]] → [[연결 거부와 시간 초과의 차이]]
 - [[IP Address and Subnet|IP 주소와 서브넷]] → [[Unicast Broadcast Multicast Anycast|유니캐스트·브로드캐스트·멀티캐스트·애니캐스트]] → [[ARP]] → [[Default Gateway|기본 게이트웨이]] → [[VLAN]]
-- [[Switch|스위치]] → [[Router|라우터]] → [[Internet Routing|인터넷의 통신 구조]]
-- [[BGP]] → [[IXP Peering and Transit|IXP·피어링·트랜짓]] → [[Backbone Network|백본 네트워크]]
+- [[Switch|스위치]] → [[Router|라우터]] → [[IGP]] → [[OSPF]] · [[IS-IS]]
+- [[Internet Routing|인터넷의 통신 구조]] → [[BGP]] → [[IXP Peering and Transit|IXP·피어링·트랜짓]] → [[Backbone Network|백본 네트워크]]
 - [[DNS]] → [[NAT]] → [[Load Balancing|로드 밸런싱]] → [[L4 and L7 Load Balancing|L4·L7 로드 밸런싱]]
 - [[Public and Private IP|공인 IP와 사설 IP]] · [[Firewall|방화벽]] · [[Security Group]]
 - [[HTTP and HTTPS|HTTP와 HTTPS]] · [[TLS]] · [[Digital Signature and Certificate|전자서명과 인증서]] · [[SSH]]

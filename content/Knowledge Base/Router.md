@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-19
 ---
 
 ## 목차
@@ -84,7 +84,7 @@ MAC 주소를 바꾸기 때문에 라우팅하는 것이 아니다. 링크마다
 
 - 인터페이스를 설정하면 생기는 직접 연결 경로
 - 관리자가 지정하는 정적 경로와 기본 경로
-- OSPF·IS-IS 같은 내부 라우팅 프로토콜로 배운 경로
+- [[IGP]]인 [[OSPF]]·[[IS-IS]] 같은 내부 라우팅 프로토콜로 배운 경로
 - [[BGP]]로 다른 AS에서 배운 인터넷 프리픽스
 
 ## 5. 기본 게이트웨이와 라우터의 관계
@@ -121,6 +121,7 @@ IXP나 트랜짓은 라우터 종류가 아니다. IXP는 여러 사업자가 �
 ## 9. 관련 문서
 
 - [[Switch|스위치]] · [[Internet Routing|인터넷의 통신 구조]] · [[BGP]]
+- [[IGP]] · [[OSPF]] · [[IS-IS]]
 - [[IXP Peering and Transit|IXP·피어링·트랜짓]] · [[Backbone Network|백본 네트워크]]
 - [[Networking]] · [[NIC]]
 
