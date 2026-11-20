@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -119,6 +119,7 @@ SQL을 사용자 문자열의 단순 연결로 만들면 입력이 질의 구조
 
 - [[Web Server]], [[Database]], [[3-Tier Architecture]]
 - [[Server]], [[Networking]], [[Storage]], [[Harbor]]
+- 관련 질문: [[3-Tier 아키텍처의 로드밸런서 도입 조건]] · [[CI·CD 변경 사항의 DR 반영]] · [[NFS 서버 구성 방식]]
 
 ## 10. 출처
 

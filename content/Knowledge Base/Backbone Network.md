@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -94,6 +94,7 @@ IP Transit: 직접 연결하지 않은 인터넷 목적지까지 도달
 
 - [[Internet Routing|인터넷의 통신 구조]] · [[Router|라우터]]
 - [[BGP]] · [[IXP Peering and Transit|IXP·피어링·트랜짓]]
+- [[IGP]] · [[OSPF]] · [[IS-IS]]
 - [[Switch|스위치]] · [[Networking]]
 
 ## 9. 출처

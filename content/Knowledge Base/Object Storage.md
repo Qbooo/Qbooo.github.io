@@ -11,7 +11,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -118,6 +118,7 @@ NetApp은 회사 이름이며 모든 제품이 오브젝트 스토리지인 것�
 - [[Microsoft Azure]]
 
 - [[Storage]]
+- 관련 질문: [[이미지 파일의 저장소 선택]] · [[오브젝트 스토리지의 물리적 저장 구조]]
 
 ## 11. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -124,6 +124,7 @@ DB는 지속적으로 보존해야 하는 데이터를 관리하므로 단순히
 - [[Web Server]], [[Web Application Server]], [[Database]]
 - [[Separation of Concerns]]
 - [[Tenant]], [[Multi-tenancy]], [[Terraform]]
+- 관련 질문: [[3-Tier 아키텍처의 로드밸런서 도입 조건]] · [[DR 컷오버와 서비스 복구 순서]]
 
 ## 10. 출처
 

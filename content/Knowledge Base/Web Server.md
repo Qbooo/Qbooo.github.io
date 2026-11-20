@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -99,6 +99,7 @@ CERN에서 제안된 웹은 서로 다른 컴퓨터의 정보를 하이퍼텍스
 
 - [[Server]], [[Networking]], [[3-Tier Architecture]]
 - [[Web Application Server]], [[Database]], [[CDN]]
+- 관련 질문: [[3-Tier 아키텍처의 로드밸런서 도입 조건]] · [[CI·CD 변경 사항의 DR 반영]]
 
 ## 10. 출처
 

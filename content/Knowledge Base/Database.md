@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-05
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -149,6 +149,7 @@ IBM 연구원 Edgar F. Codd는 1970년 관계형 데이터 모델을 제안했�
 - [[Server]], [[Networking]], [[Storage]], [[3-Tier Architecture]]
 - [[Web Application Server]], [[Block Storage]], [[iSCSI]]
 - [[Data Lake]], [[Data Warehouse]]
+- 관련 질문: [[DB와 DBMS의 차이]] · [[DB의 이미지·영상 저장 방식]]
 
 ## 12. 출처
 

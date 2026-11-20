@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-06
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -144,6 +144,7 @@ Confidential VM은 메모리 암호화와 검증 기능을 이용해 호스트 �
 - [[Hypervisor]] · [[Virtual Machine]] · [[Bare Metal]]
 - [[Server]] · [[CPU]] · [[Memory]] · [[Disk]] · [[NIC]]
 - [[Physical Server Configuration]] · [[Server Migration Types]] · [[Cloud 분류]]
+- 관련 질문: [[하이퍼바이저의 물리 자원 분배 원리]]
 
 ## 10. 출처
 

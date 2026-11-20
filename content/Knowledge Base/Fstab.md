@@ -7,7 +7,7 @@ aliases: [Fstab, /etc/fstab, 파일시스템 테이블]
 status: growing
 lang: ko
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -117,6 +117,7 @@ df -hT /data
 
 - [[Mount|마운트]] · [[Filesystem|파일시스템]] · [[Partition|파티션]]
 - [[Disk Capacity Check|디스크 용량 확인]] · [[Linux Directory Structure|Linux 디렉터리 구조]]
+- 관련 질문: [[NFS 서버 구성 방식]]
 
 ## 8. 출처
 

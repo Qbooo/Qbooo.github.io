@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -107,6 +107,7 @@ flowchart TB
 - [[Networking]] · [[Router]] · [[Internet Routing|인터넷의 통신 구조]]
 - [[NIC]] · [[Virtualization]] · [[BGP]]
 - [[VLAN]] · [[ARP]] · [[Default Gateway|기본 게이트웨이]]
+- 관련 질문: [[네트워크 장비별 처리 계층]]
 
 ## 9. 출처
 

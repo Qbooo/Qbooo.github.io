@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -120,6 +120,7 @@ hot-plug 지원은 커넥터·컨트롤러·OS 등 구성의 조건이며, 아�
 - [[Storage]] · [[Block Storage]] · [[File Storage]] · [[Object Storage]]
 - [[Partition|파티션]] · [[Filesystem|파일시스템]] · [[Mount|마운트]]
 - [[Memory]] · [[Database]] · [[VPSA]] · [[Physical Server Configuration]]
+- 관련 질문: [[백업 서버의 분리와 아키텍처 표기]] · [[오브젝트 스토리지의 물리적 저장 구조]] · [[하이퍼바이저의 물리 자원 분배 원리]] · [[DB 복제본의 백업 저장소 설계]]
 
 ## 9. 출처
 

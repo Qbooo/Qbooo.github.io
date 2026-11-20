@@ -14,7 +14,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -88,6 +88,8 @@ IaaS는 VM처럼 인프라 자원을 제공하고, PaaS는 애플리케이션 �
 - [[Networking]]
 
 - [[3-Tier Architecture]]
+
+- 관련 질문: [[온프레미스의 EIP 대응 구성]]
 
 ## 8. 출처
 

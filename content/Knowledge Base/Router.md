@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-16
-updated: 2026-11-19
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -124,6 +124,7 @@ IXP나 트랜짓은 라우터 종류가 아니다. IXP는 여러 사업자가 �
 - [[IGP]] · [[OSPF]] · [[IS-IS]]
 - [[IXP Peering and Transit|IXP·피어링·트랜짓]] · [[Backbone Network|백본 네트워크]]
 - [[Networking]] · [[NIC]]
+- 관련 질문: [[네트워크 장비별 처리 계층]]
 
 ## 10. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-19
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -139,6 +139,7 @@ sequenceDiagram
 - [[HTTP and HTTPS|HTTP와 HTTPS]] · [[TLS]] · [[Digital Signature and Certificate|전자서명과 인증서]] · [[SSH]]
 - [[CDN]], [[SNMP]], [[iSCSI]]
 - [[서버 마이그레이션의 네트워크 준비와 전환 시점]]
+- 관련 질문: [[내부 DNS 배치 기준]] · [[에이전트 포트의 의미]] · [[DMZ와 배스천의 차이]] · [[온프레미스의 EIP 대응 구성]] · [[ping 실패와 서비스 연결의 차이]] · [[모니터링 서버의 배치와 수집 범위]] · [[3-Tier 아키텍처의 로드밸런서 도입 조건]]
 
 ## 9. 출처
 

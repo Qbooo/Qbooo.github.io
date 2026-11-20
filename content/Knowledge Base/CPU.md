@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-10
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -76,6 +76,7 @@ CPU를 장착할 수 있는지는 소켓 모양만으로 결정되지 않는다.
 - [[Server]] · [[Physical Server Configuration]] · [[Memory]]
 - [[NIC]] · [[Disk]] · [[AI Infrastructure Architect]] · [[GPU Farm]]
 - [[CPU Monitoring|CPU 모니터링]] · [[Program and Process|프로그램과 프로세스]]
+- 관련 질문: [[하이퍼바이저의 물리 자원 분배 원리]]
 
 ## 8. 출처
 

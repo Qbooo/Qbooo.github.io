@@ -14,7 +14,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -119,6 +119,8 @@ Agentless와 Serverless는 이름이 비슷해 혼동되기 쉽지만 서로 다
 - [[Cutover]]
 
 - [[Rackware|RackWare]]
+
+- 관련 질문: [[서버 마이그레이션의 네트워크 준비와 전환 시점]] · [[타깃 프로비저닝 방식에 따른 마이그레이션 절차]]
 
 ## 10. 출처
 

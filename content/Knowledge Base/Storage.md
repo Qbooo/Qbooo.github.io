@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -155,6 +155,7 @@ RPO는 허용 가능한 데이터 손실 구간, RTO는 허용 가능한 복구 
 - [[Server]], [[Networking]], [[Database]]
 - [[Block Storage]], [[File Storage]], [[Object Storage]], [[iSCSI]]
 - [[VPSA]], [[NGOS]], [[ZIOS]], [[Hammerspace]]
+- 관련 질문: [[이미지 파일의 저장소 선택]] · [[오브젝트 스토리지의 물리적 저장 구조]] · [[NFS 서버의 복제와 백업]] · [[백업 서버의 분리와 아키텍처 표기]] · [[DB 복제본의 백업 저장소 설계]]
 
 ## 10. 출처
 

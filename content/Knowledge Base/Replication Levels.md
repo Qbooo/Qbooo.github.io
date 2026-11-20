@@ -17,7 +17,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -130,6 +130,8 @@ Azure Site Recovery 문서에서 크래시 일관성(crash-consistent)은 전원
 - [[Block Storage]]
 
 - [[File Storage]]
+
+- 관련 질문: [[DR 직접 복제와 이미지 풀의 역할]] · [[DR 컷오버와 서비스 복구 순서]]
 
 ## 9. 출처
 

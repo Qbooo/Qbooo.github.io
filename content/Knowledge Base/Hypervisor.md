@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -147,6 +147,7 @@ flowchart TB
 - [[Virtualization]] · [[Virtual Machine]] · [[Bare Metal]]
 - [[CPU]] · [[Memory]] · [[Disk]] · [[NIC]]
 - [[Physical Server Configuration]] · [[Server Migration Types]]
+- 관련 질문: [[하이퍼바이저의 물리 자원 분배 원리]]
 
 ## 11. 출처
 

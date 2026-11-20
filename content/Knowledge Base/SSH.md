@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -563,6 +563,7 @@ ssh -v Qbo@server.example.com
 - [[Networking]], [[GRE]], Bastion
 - [[TLS]] · [[Digital Signature and Certificate|전자서명과 인증서]] · [[Firewall]] · [[Security Group]]
 - [[Security 분류|Security]], [[Networking 분류|Networking]]
+- 관련 질문: [[연결 거부와 시간 초과의 차이]] · [[온프레미스의 EIP 대응 구성]] · [[DMZ와 배스천의 차이]]
 
 ## 16. 출처
 

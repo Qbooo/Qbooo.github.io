@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -115,6 +115,7 @@ VM은 독립된 운영체제를 실행하고, 컨테이너는 일반적으로 �
 - [[Networking]], [[Storage]]: 서버가 사용하는 연결·저장 기반
 - [[3-Tier Architecture]], [[Web Server]], [[Web Application Server]], [[Database]]
 - [[Shell Script]], [[SNMP]], [[Unified Cloud Management Portal]]
+- 관련 질문: [[내부 DNS 배치 기준]] · [[CI·CD 도구의 배치 기준]] · [[DMZ와 배스천의 차이]]
 
 ## 9. 출처
 

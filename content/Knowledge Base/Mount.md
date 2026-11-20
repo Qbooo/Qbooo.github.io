@@ -7,7 +7,7 @@ aliases: [마운트, 마운트 지점, Mount Point, mount]
 status: growing
 lang: ko
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -135,6 +135,7 @@ flowchart TD
 
 - [[Disk|디스크]] · [[Partition|파티션]] · [[Filesystem|파일시스템]]
 - [[Fstab|fstab]] · [[Disk Capacity Check|디스크 용량 확인]] · [[Linux Directory Structure|Linux 디렉터리 구조]]
+- 관련 질문: [[NFS 서버 구성 방식]]
 
 ## 8. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -75,6 +75,7 @@ NIC 오류를 이해할 때는 단순 속도보다 어느 단계에서 데이터
 
 - [[Networking]] · [[Server]] · [[Physical Server Configuration]]
 - [[CPU]] · [[Memory]] · [[iSCSI]] · [[GPU Farm]]
+- 관련 질문: [[네트워크 장비별 처리 계층]] · [[에이전트 포트의 의미]] · [[연결 거부와 시간 초과의 차이]] · [[온프레미스의 EIP 대응 구성]] · [[하이퍼바이저의 물리 자원 분배 원리]]
 
 ## 8. 출처
 

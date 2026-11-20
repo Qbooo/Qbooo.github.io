@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-10
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -207,6 +207,7 @@ flowchart TD
 - [[CPU]] · [[Program and Process|프로그램과 프로세스]] · [[Kernel|커널]]
 - [[Hypervisor|하이퍼바이저]] · [[Virtual Machine|가상 머신]] · [[Memory Monitoring|메모리 모니터링]]
 - [[Disk|디스크]] · [[Linux Logging|Linux 로그]] · [[Server|서버]]
+- 관련 질문: [[모니터링 서버의 배치와 수집 범위]]
 
 ## 9. 출처
 

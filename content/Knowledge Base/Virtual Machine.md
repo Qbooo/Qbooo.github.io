@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-06
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -173,6 +173,7 @@ VM은 서로 다른 게스트 커널과 메모리 매핑, 가상 디스크, 가�
 - [[Virtualization]] · [[Hypervisor]] · [[Bare Metal]]
 - [[Server]] · [[CPU]] · [[Memory]] · [[Disk]] · [[NIC]]
 - [[Server Migration Types]] · [[Delta Sync]] · [[Cutover]]
+- 관련 질문: [[하이퍼바이저의 물리 자원 분배 원리]] · [[ping 실패와 서비스 연결의 차이]] · [[VM과 네트워크 장비의 모니터링 방식]]
 
 ## 12. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-11
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -86,6 +86,8 @@ SNMPv1·v2c의 community 기반 접근과 v3 USM을 구분한다. Community 문�
 - [[Networking]]
 
 - [[Server]]
+
+- 관련 질문: [[모니터링 서버의 배치와 수집 범위]] · [[VM과 네트워크 장비의 모니터링 방식]]
 
 ## 8. 출처
 

@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-05
-updated: 2026-11-10
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -78,6 +78,7 @@ DIMM이 인식되지 않거나 오류가 누적될 때도 운영체제 수치만
 - [[CPU]] · [[Server]] · [[Physical Server Configuration]]
 - [[Disk]] · [[Database]] · [[GPU Farm]]
 - [[Memory Monitoring|메모리 모니터링]] · [[Program and Process|프로그램과 프로세스]]
+- 관련 질문: [[하이퍼바이저의 물리 자원 분배 원리]]
 
 ## 8. 출처
 

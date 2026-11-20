@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-17
-updated: 2026-11-17
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -190,6 +190,7 @@ HAProxy의 TCP Mode는 양방향 트래픽을 전달하고, HTTP Mode는 프로�
 
 - [[Load Balancing|로드 밸런싱]], [[OSI and TCP-IP Models|OSI 7계층과 TCP/IP 4계층]]
 - [[Encapsulation|캡슐화]], [[Web Server]], [[NAT]]
+- 관련 질문: [[3-Tier 아키텍처의 로드밸런서 도입 조건]]
 
 ## 11. 출처
 

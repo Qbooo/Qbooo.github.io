@@ -11,7 +11,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 ## 목차
@@ -113,6 +113,7 @@ BOwiki 자체 제작 개념도. 클라이언트에게 제공되는 인터페이�
 - [[Storage]]
 
 - [[Server]]
+- 관련 질문: [[이미지 파일의 저장소 선택]] · [[오브젝트 스토리지의 물리적 저장 구조]]
 
 ## 9. 출처
 
