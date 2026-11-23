@@ -30,6 +30,7 @@ domain: Cloud
 - [[Unified Cloud Management Portal]]: 클라우드 자원의 통합 관리 창구
 - [[Zadara Symphony API]]: zCompute API와 인증·호환 인터페이스
 - [[AWS CLI]]: 명령줄 기반 클라우드 API 호출
+- [[IaC 분류|IaC]]: 코드로 인프라 구성을 정의하고 변경·상태를 관리하는 원리와 도구
 - [[Terraform]]: 코드 기반 인프라 구성과 상태 관리
 - [[GPUaaS]]: GPU 연산 자원의 서비스 제공 모델
 - [[Zadara Sovereign AI Edge Cloud]]: 데이터 통제와 AI 엣지 인프라

@@ -130,6 +130,7 @@ type: map
 - [[Compute 분류|Compute]]
 - [[Storage 분류|Storage]]
 - [[Networking 분류|Networking]]
+- [[IaC 분류|IaC]]
 - [[Database 분류|Database]]
 - [[Container 분류|Container]]
 - [[Cloud 분류|Cloud]]
