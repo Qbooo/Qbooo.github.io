@@ -3,7 +3,7 @@ title: IaC 분류
 type: map
 domain: IaC
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 ---
 
 ## 목차
@@ -32,7 +32,8 @@ Infrastructure as Code
 │  ├─ Module
 │  ├─ Plan과 Apply
 │  ├─ State와 Backend
-│  └─ Import
+│  ├─ Import
+│  └─ VM 부팅과 cloud-init
 └─ 관련 자동화 인터페이스
    ├─ API
    ├─ CLI
@@ -48,18 +49,19 @@ Infrastructure as Code
 - [[AWS CLI]]: AWS 호환 API의 개별 작업을 명령줄에서 호출하는 인터페이스
 - [[Zadara Symphony API]]: zCompute의 관리 API와 AWS 호환 API, 인증 방식과 자동화 도구의 연결
 - [[Shell Script|셸 스크립트]]: 명령과 제어 흐름을 조합해 반복 작업을 자동화하는 방식
+- [[선언형 구성과 원하는 상태]] — 코드가 표현하는 목표와 리소스 연결
+- [[구성 드리프트]] — 코드, State, 실제 설정 사이의 차이
+- [[Terraform Core]] — 구성 해석과 의존성 그래프
+- [[Terraform Provider]] — 버전, 스키마와 서비스 API 호환성
+- [[Terraform Resource와 Data Source]] — 객체 관리, 외부 조회, 참조와 입력값
+- [[Terraform Plan과 Apply]] — 변경 범위 판독, 적용과 통신 검증
+- [[Terraform State와 Backend]] — 객체 연결 정보, 저장과 잠금
+- [[Terraform Import]] — 기존 객체를 코드의 관리 대상으로 편입
+- [[cloud-init]] — 클라우드 VM에서 사용자 데이터로 초기 계정과 SSH 설정 적용
 
 ## 예정 문서
 
-- 선언형 구성과 원하는 상태
-- 구성 드리프트
-- Terraform Core
-- Terraform Provider
-- Terraform Resource와 Data Source
 - Terraform Module
-- Terraform Plan과 Apply
-- Terraform State와 Backend
-- Terraform Import
 - 구성 관리 도구
 
 ## 둘러보기

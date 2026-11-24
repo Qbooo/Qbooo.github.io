@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-20
+updated: 2026-11-24
 ---
 
 ## 목차
@@ -255,6 +255,12 @@ Windows Host 공개 키 → Linux가 지문 확인 → known_hosts에 기록
 
 비밀번호 인증을 사용하면 Linux 사용자 인증 키 쌍은 생략할 수 있다. 그러나 Windows Host Key를 이용한 서버 확인과 양쪽의 임시 키 교환·세션 암호화는 여전히 이루어진다.
 
+### 클라우드 VM의 초기 공개 키 등록
+
+SSH 클라이언트 A는 개인 키로 서명하고 서버 B는 로그인 대상 계정에 등록된 공개 키로 서명을 검증한다. VM을 처음 만들 때는 플랫폼이나 이미지의 초기화 기능이 B에 공개 키를 미리 배치할 수 있으므로 이후 A에서 접속할 수 있다. Amazon EC2는 인스턴스 시작 시 지정한 키 쌍의 공개 키를 첫 부팅에 등록한다. EC2에서 키 쌍을 생성할 때 내려받는 `.pem`은 이 용도의 개인 키 파일이다. 로컬에서 `ssh-keygen`으로 만든 개인 키도 파일 확장자와 관계없이 SSH 클라이언트에서 지정할 수 있다.[^cloudkeys][^ssh]
+
+이미 설치된 클라우드 이미지를 사용하면 ISO 설치 때처럼 초기 계정과 비밀번호를 직접 설정하는 과정이 생략된다. 초기 사용자와 인증 방식은 이미지와 생성 설정에 따라 달라진다. 가상 콘솔의 비밀번호 로그인은 게스트 OS 계정으로 처리되며, SSH 비밀번호 로그인에는 SSH 서버의 인증 설정도 필요하다. 일반 계정에 권한이 부여되어 있다면 `sudo`로 관리자 작업을 수행할 수 있다. [[Terraform#4. 설정 해석과 API 요청의 실행 과정|Terraform의 VM 초기화]]에서 두 로그인 방식을 배포 시 구성하는 방법을 확인할 수 있다.[^cloudusers]
+
 ## 5. 인감도장에 빗댄 공개 키 인증
 
 ```text
@@ -299,6 +305,14 @@ TCP 연결
 | 자동화 | 비밀번호 보관 문제 | 전용 키와 제한 옵션 사용 가능 |
 
 비밀번호 인증을 사용하더라도 호스트 키 경고를 무시하면 잘못된 서버에 비밀번호를 입력할 위험이 있다. 공개 키 인증도 개인 키가 유출되면 위험하므로 키 암호 설정, 장치별 분리, 사용하지 않는 키 폐기가 필요하다.
+
+### 비밀번호 저장과 검증
+
+Linux의 로컬 계정은 비밀번호 원문 대신 비밀번호를 검증하는 데 필요한 해시를 저장할 수 있다. 로그인할 때 운영체제는 사용자가 방금 입력한 값 하나를 저장된 솔트와 같은 방식으로 계산하고, 결과가 저장된 해시와 일치하는지 확인한다. 원래 비밀번호를 복원하는 과정은 없다.[^password-hash]
+
+솔트는 비밀번호 해시 계산에 추가하는 값이다. 같은 비밀번호라도 솔트가 다르면 결과가 달라지므로 미리 계산한 결과를 여러 계정에서 재사용하기 어려워진다. 검증에 다시 필요하므로 솔트와 해시 방식은 결과와 함께 저장할 수 있다. 해시가 유출되면 공격자는 로그인 화면을 거치지 않고 후보를 계산해 비교할 수 있다. 길고 예측하기 어려운 비밀번호와 계산 비용을 높인 비밀번호 해시 방식은 이 추측 비용을 높인다.[^password-hash]
+
+[[Terraform]]으로 VM을 배포할 때 cloud-init에 비밀번호 해시를 전달하면 초기 설정 파일에 평문 비밀번호를 넣는 일을 피할 수 있다. 해시가 담긴 설정 파일과 초기화 데이터도 비밀정보로 관리한다. 가상 콘솔에서 비밀번호를 쓰는 것과 SSH 서버가 비밀번호 인증을 허용하는 것은 별도의 설정이다.[^cloudusers]
 
 ## 7. 연결 유지와 SSH 채널
 
@@ -566,6 +580,11 @@ ssh -v Qbo@server.example.com
 - 관련 질문: [[연결 거부와 시간 초과의 차이]] · [[온프레미스의 EIP 대응 구성]] · [[DMZ와 배스천의 차이]]
 
 ## 16. 출처
+
+[^password-hash]: NIST, [SP 800-63B — Password Verifiers](https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver).
+
+[^cloudkeys]: AWS, [Create a key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html), [Add or replace a public key](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replacing-key-pair.html).
+[^cloudusers]: AWS, [Manage system users on EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html). Microsoft Learn, [Azure Linux VM FAQ](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/faq). cloud-init, [Set Passwords](https://docs.cloud-init.io/en/latest/reference/modules.html#set-passwords).
 
 [^ssh]: [OpenBSD Manual Pages — `ssh(1)`](https://man.openbsd.org/ssh.1), [`sshd(8)`](https://man.openbsd.org/sshd.8)
 [^hostcheck]: [OpenBSD Manual Pages — `ssh_config(5)`, `StrictHostKeyChecking` and `UserKnownHostsFile`](https://man.openbsd.org/ssh_config)

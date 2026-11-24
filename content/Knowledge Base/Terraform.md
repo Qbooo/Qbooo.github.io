@@ -13,7 +13,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-04
-updated: 2026-11-23
+updated: 2026-11-24
 ---
 
 ## 목차
@@ -81,6 +81,8 @@ cloud-init을 지원하는 이미지에서는 Terraform이 `user_data`로 초기
 
 브라우저의 가상 콘솔에서는 게스트 운영체제의 계정으로 로그인한다. SSH에는 별도로 네트워크 도달성과 SSH 인증이 필요하다. 공개키 인증에서는 공개키를 VM의 계정에 등록하고 개인키는 접속하는 쪽에서 보관한다. 초기화 데이터에 인증 정보를 다룰 때는 구성 파일, 상태, VM 메타데이터의 접근 범위를 함께 고려한다.[^3][^cloud-init][^v-sensitive]
 
+AWS 호환 환경에서는 이미지가 지원하는 초기화 방식에 따라 두 경로를 사용할 수 있다. 플랫폼에 공개 키를 등록한 뒤 `key_name`으로 키 쌍 이름을 지정하거나, `user_data`의 cloud-init 설정에서 특정 계정의 `ssh_authorized_keys`에 공개 키 문자열을 전달한다. 두 경우 모두 개인 키는 접속하는 쪽에 보관한다. cloud-init을 이용하면 콘솔 로그인용 로컬 계정 비밀번호와 SSH 비밀번호 인증 허용 여부도 각각 설정할 수 있다. [[SSH#4. 서버 호스트 인증과 사용자 인증|SSH 공개 키 인증]] 참고.[^3][^cloud-init][^key-pair]
+
 ## 5. 변경 계획과 적용
 
 `fmt`는 구성 파일의 서식을 정리하고, `validate`는 구문과 인수의 일관성을 검사한다. `plan`은 현재 구성으로 어떤 작업이 필요한지 보여준다. 예를 들어 `~ update in-place`는 기존 객체를 유지하며 변경한다는 표시다. 실제 변경 요청의 성공 여부는 적용 결과와 이후 조회에서 확인한다.[^v-validate][^v-plan][^d-apply]
@@ -102,6 +104,10 @@ State에는 민감한 값이 포함될 수 있다. `sensitive = true`는 주로 
 zCompute AWS API 문서는 Terraform 연동 예시와 지원 매개변수 표를 제공한다. 실제 적용은 프로바이더 버전과 API 호환 범위에 맞춰야 하며, 과거 예제의 버전이나 TLS 검증 생략 설정을 그대로 운영 기준으로 삼으면 안 된다.[^3]
 
 ## 7. 관련 문서
+
+- [[Terraform Core]] · [[Terraform Provider]] · [[Terraform Resource와 Data Source]]
+- [[Terraform Plan과 Apply]] · [[Terraform State와 Backend]] · [[Terraform Import]]
+- [[선언형 구성과 원하는 상태]] · [[구성 드리프트]] · [[cloud-init]]
 
 - [[Infrastructure as Code|IaC]]
 - [[AWS CLI]]
@@ -133,6 +139,7 @@ zCompute AWS API 문서는 Terraform 연동 예시와 지원 매개변수 표를
 [^v-validate]: [HashiCorp — terraform validate](https://developer.hashicorp.com/terraform/cli/commands/validate)
 [^v-provider]: [HashiCorp — AWS Provider authentication and configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 [^cloud-init]: [cloud-init — Boot stages](https://docs.cloud-init.io/en/24.2/explanation/boot.html), [Module reference](https://docs.cloud-init.io/en/latest/reference/modules.html#users-and-groups)
+[^key-pair]: [Zadara — Key Pairs](https://guides.zadara.com/cs-compute-guide/latest/key-pair.html), [AWS — Add or replace a public key](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replacing-key-pair.html)
 
 ## 둘러보기
 

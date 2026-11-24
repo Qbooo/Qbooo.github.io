@@ -122,6 +122,7 @@ type: map
 통신 경계의 허용 정책부터 웹과 원격 접속에서 상대를 확인하고 데이터를 암호화하는 흐름으로 읽을 수 있습니다.
 
 - 네트워크 허용 정책: [[Firewall|방화벽]] · [[Security Group]]
+- 방화벽·VPN 구현: [[pfSense]]
 - 웹 보안 통신: [[HTTP and HTTPS|HTTP와 HTTPS]] → [[TLS]]
 - 신뢰 기반: [[Digital Signature and Certificate|전자서명과 인증서]]
 - 원격 접속: [[SSH]]
@@ -131,6 +132,7 @@ type: map
 - [[Storage 분류|Storage]]
 - [[Networking 분류|Networking]]
 - [[IaC 분류|IaC]]
+  - [[Terraform Plan과 Apply]] · [[Terraform State와 Backend]] · [[Terraform Import]] · [[cloud-init]]
 - [[Database 분류|Database]]
 - [[Container 분류|Container]]
 - [[Cloud 분류|Cloud]]

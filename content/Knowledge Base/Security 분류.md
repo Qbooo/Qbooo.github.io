@@ -16,6 +16,7 @@ domain: Security
 
 - [[Linux Accounts and Permissions|리눅스 계정과 권한]]: UID·GID, 파일·디렉터리 권한과 root·sudo
 - [[Firewall|방화벽]]: 경계의 패킷과 연결 상태를 정책에 따라 허용·차단
+- [[pfSense]] — 방화벽·라우팅·VPN을 제공하는 네트워크 소프트웨어
 - [[Security Group]]: 클라우드 가상 인터페이스에 적용하는 논리적 방화벽 정책
 - [[HTTP and HTTPS|HTTP와 HTTPS]]: HTTP 요청·응답과 TLS로 보호되는 HTTPS
 - [[TLS]]: 인증·기밀성·무결성을 제공하는 보안 통신 프로토콜
