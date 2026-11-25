@@ -9,7 +9,7 @@ aliases:
 status: growing
 lang: ko
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-25
 ---
 
 ## 목차
@@ -51,6 +51,12 @@ sequenceDiagram
 SMB는 Windows 계정 체계와 자연스럽게 결합한다. Active Directory 환경에서는 사용자와 그룹의 SID, 공유 권한과 파일시스템 ACL을 함께 사용한다.
 
 공유 권한과 파일 권한을 모두 적용하면 실제 허용 범위는 두 정책의 결합으로 결정된다. 따라서 “공유에는 접근되지만 파일은 열리지 않는” 상황도 생길 수 있다.
+
+### 공유 폴더를 읽는 웹 서비스의 권한
+
+Linux 웹 서버는 SMB 공유를 읽기 전용으로 마운트하고 그 경로의 파일을 HTTP로 제공할 수 있다. Windows 서버의 공유 권한과 NTFS 권한을 통과해 마운트에 성공한 뒤에도, Linux에서는 프로세스의 파일 접근 권한과 SELinux 정책이 적용된다.
+
+RHEL 계열에서 CIFS 마운트에 cifs_t 타입이 지정되고 웹 서버 정책이 httpd 도메인 계열을 사용한다면, httpd_use_cifs Boolean을 확인할 수 있다. 셸에서 파일을 읽었어도 서비스 프로세스에는 별도의 보안 컨텍스트가 적용될 수 있으므로, HTTP 오류를 조사할 때는 웹 서버 로그의 실제 경로와 Permission denied 여부를 함께 확인한다. [Red Hat Enterprise Linux 9 SELinux 가이드](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/pdf/using_selinux/red_hat_enterprise_linux-9-using_selinux-en-us.pdf)
 
 ## 4. 파일 서비스 기능
 

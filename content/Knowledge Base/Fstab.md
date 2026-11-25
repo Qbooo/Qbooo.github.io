@@ -7,7 +7,7 @@ aliases: [Fstab, /etc/fstab, 파일시스템 테이블]
 status: growing
 lang: ko
 created: 2026-11-11
-updated: 2026-11-20
+updated: 2026-11-25
 ---
 
 ## 목차
@@ -112,6 +112,12 @@ df -hT /data
 `mount -a`는 문법만 검사하는 명령이 아니라 fstab 항목을 실제로 마운트하려고 시도한다. 운영 환경에서는 기존 마운트와 서비스 영향을 먼저 확인한다. systemd 기반 시스템에서는 fstab 수정 후 `systemctl daemon-reload`가 권장될 수 있다.[^fstab]
 
 잘못된 장치, 존재하지 않는 마운트 지점, 오타 난 파일시스템 종류와 옵션은 부팅 지연이나 긴급 모드 진입을 일으킬 수 있다. 원격 서버에서는 콘솔·복구 경로를 준비한 뒤 변경한다.
+
+### 네트워크 공유의 접근 시 자동 마운트
+
+systemd 기반 Linux에서 SMB 공유를 fstab에 등록할 때 x-systemd.automount를 사용하면 부팅 시 자동 마운트 유닛을 준비하고, 해당 경로에 파일 접근이 들어올 때 실제 마운트가 시작된다. _netdev는 네트워크가 필요한 마운트임을 명시하고, nofail은 마운트 실패가 부팅을 막지 않도록 한다. 파일을 제공하는 서비스는 공유가 꺼져 있으면 해당 요청에 실패할 수 있다.
+
+검증할 때는 재부팅 후 수동 mount 없이 애플리케이션에서 파일을 요청하고 findmnt로 실제 공유와 읽기 전용 옵션을 확인한다. SMB 암호는 fstab 본문에 넣지 않고 접근 권한을 제한한 별도 인증 파일을 참조한다. [systemd.mount(5)](https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html)
 
 ## 7. 관련 문서
 

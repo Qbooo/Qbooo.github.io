@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-25
 ---
 
 ## 목차
@@ -40,6 +40,10 @@ Windows PC에서 OpenVPN 클라이언트가 `.ovpn` 프로필을 읽어 pfSense�
 | OpenVPN 방화벽 규칙 | 연결된 사용자가 터널 안에서 접근할 목적지와 포트를 제한 |
 
 예를 들어 Bastion 한 대의 주소를 `/32` 경로로 광고하고, OpenVPN 규칙에서 그 주소의 TCP 22만 허용할 수 있다. [Netgate OpenVPN 방화벽 규칙](https://docs.netgate.com/pfsense/en/latest/vpn/openvpn/firewall-rules.html)
+
+### 사설 배스천과 VPN 인증
+
+공인 주소가 있는 배스천의 SSH를 출발지 IP로 제한하면 허용된 회선에서만 SSH 인증 단계에 도달할 수 있다. 같은 NAT 뒤의 여러 장치는 동일한 공인 IP로 보일 수 있다. VPN 뒤에 배스천을 두면 VPN 접속 단계에서 자격 증명을 확인하고, 배스천에서 SSH 인증을 다시 수행한다. 이 구성에서는 VPN 서비스의 상태와 VPN에서 배스천까지의 라우팅·방화벽 정책도 관리 경로의 가용성에 영향을 준다. [Netgate OpenVPN 개요](https://docs.netgate.com/pfsense/en/latest/vpn/openvpn/index.html)
 
 ## 연결 검증
 

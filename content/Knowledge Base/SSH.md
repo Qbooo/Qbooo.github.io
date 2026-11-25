@@ -9,7 +9,7 @@ status: growing
 lang: ko
 featured: false
 created: 2026-11-09
-updated: 2026-11-24
+updated: 2026-11-25
 ---
 
 ## 목차
@@ -519,6 +519,16 @@ ssh -L 8080:internal-web.example.com:80 Qbo@bastion.example.com
 ```
 
 이 예시는 로컬 8080번 포트에 들어온 연결을 SSH 서버를 거쳐 내부 웹 서버 80번 포트로 전달한다. 포트 포워딩은 네트워크 접근 경로를 만들 뿐 대상 애플리케이션의 인증·권한을 자동으로 대신하지 않는다.
+
+### 로컬 포트 포워딩을 이용한 RDP 접속
+
+사설망의 Windows 서버를 관리할 때는 SSH 클라이언트의 로컬 포트를 RDP 연결의 입구로 사용할 수 있다.
+
+```bash
+ssh -N -L 127.0.0.1:13389:windows.example.net:3389 admin@bastion.example.net
+```
+
+관리 PC의 RDP 클라이언트가 127.0.0.1:13389에 접속하면, SSH 서버인 배스천이 대상 Windows의 TCP 3389로 새 연결을 연다. 배스천에서는 SSH 수신과 RDP 송신이, Windows에서는 배스천으로부터의 RDP 수신이 필요하다. SSH 키로 배스천에 인증한 뒤에도 RDP에서는 Windows 계정으로 별도 인증한다. SSH 세션을 종료하면 이 세션이 전달하던 RDP 연결도 끊긴다. [OpenSSH ssh(1)](https://man.openbsd.org/ssh.1)
 
 ## 12. Bastion을 통한 접속
 
